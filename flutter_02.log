@@ -1,0 +1,91 @@
+Flutter crash report; please file at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run
+
+## exception
+
+FormatException: FormatException: No ':' on line (at offset 12)
+
+```
+#0      parse (package:package_config/packages_file.dart:53:7)
+#1      _parse (package:flutter_tools/src/dart/package_map.dart:14:10)
+#2      PackageMap.load (package:flutter_tools/src/dart/package_map.dart:37:14)
+#3      PackageMap.map (package:flutter_tools/src/dart/package_map.dart:41:5)
+#4      new PackageUriMapper (package:flutter_tools/src/compile.dart:166:84)
+#5      PackageUriMapper.findUri (package:flutter_tools/src/compile.dart:207:12)
+#6      KernelCompiler.compile (package:flutter_tools/src/compile.dart:268:34)
+<asynchronous suspension>
+#7      BundleBuilder.build (package:flutter_tools/src/bundle.dart:86:66)
+<asynchronous suspension>
+#8      IOSSimulator._sideloadUpdatedAssetsForInstalledApplicationBundle (package:flutter_tools/src/ios/simulators.dart:442:28)
+#9      IOSSimulator._setupUpdatedApplicationBundle (package:flutter_tools/src/ios/simulators.dart:410:11)
+<asynchronous suspension>
+#10     IOSSimulator.startApp (package:flutter_tools/src/ios/simulators.dart:339:15)
+<asynchronous suspension>
+#11     FlutterDevice.runHot (package:flutter_tools/src/resident_runner.dart:378:54)
+#12     _asyncThenWrapperHelper.<anonymous closure> (dart:async-patch/async_patch.dart:71:64)
+#13     _rootRunUnary (dart:async/zone.dart:1132:38)
+#14     _CustomZone.runUnary (dart:async/zone.dart:1029:19)
+#15     _FutureListener.handleValue (dart:async/future_impl.dart:137:18)
+#16     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:678:45)
+#17     Future._propagateToListeners (dart:async/future_impl.dart:707:32)
+#18     Future._completeWithValue (dart:async/future_impl.dart:522:5)
+#19     Future._asyncComplete.<anonymous closure> (dart:async/future_impl.dart:552:7)
+#20     _rootRun (dart:async/zone.dart:1124:13)
+#21     _CustomZone.run (dart:async/zone.dart:1021:19)
+#22     _CustomZone.runGuarded (dart:async/zone.dart:923:7)
+#23     _CustomZone.bindCallbackGuarded.<anonymous closure> (dart:async/zone.dart:963:23)
+#24     _microtaskLoop (dart:async/schedule_microtask.dart:41:21)
+#25     _startMicrotaskLoop (dart:async/schedule_microtask.dart:50:5)
+#26     _runPendingImmediateCallback (dart:isolate-patch/isolate_patch.dart:116:13)
+#27     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:173:5)
+```
+
+## flutter doctor
+
+```
+[32m[✓][39m Flutter (Channel stable, v1.9.1+hotfix.4, on Mac OS X 10.14.6 18G103, locale en-US)
+    [32m•[39m Flutter version 1.9.1+hotfix.4 at /Users/luli/Developer/flutter
+    [32m•[39m Framework revision cc949a8e8b (3 weeks ago), 2019-09-27 15:04:59 -0700
+    [32m•[39m Engine revision b863200c37
+    [32m•[39m Dart version 2.5.0
+
+[33m[!][39m Android toolchain - develop for Android devices (Android SDK version 29.0.2)
+    [32m•[39m Android SDK at /Users/luli/Library/Android/sdk
+    [32m•[39m Android NDK location not configured (optional; useful for native profiling support)
+    [32m•[39m Platform android-29, build-tools 29.0.2
+    [32m•[39m Java binary at: /Library/Java/JavaVirtualMachines/jdk-12.0.2.jdk/Contents/Home/bin/java
+    [32m•[39m Java version Java(TM) SE Runtime Environment (build 12.0.2+10)
+    [31m✗[39m Android license status unknown.
+      Try re-installing or updating your Android SDK Manager.
+      See https://developer.android.com/studio/#downloads or visit https://flutter.dev/setup/#android-setup for
+      detailed instructions.
+
+[32m[✓][39m Xcode - develop for iOS and macOS (Xcode 11.2)
+    [32m•[39m Xcode at /Users/luli/Downloads/Xcode-beta.app/Contents/Developer
+    [32m•[39m Xcode 11.2, Build version 11B41
+    [32m•[39m CocoaPods version 1.7.5
+
+[33m[!][39m Android Studio (not installed)
+    [32m•[39m Android Studio not found; download from https://developer.android.com/studio/index.html
+      (or visit https://flutter.dev/setup/#android-setup for detailed instructions).
+
+[33m[!][39m IntelliJ IDEA Ultimate Edition (version 2019.2.2)
+    [32m•[39m IntelliJ at /Applications/IntelliJ IDEA.app
+    [31m✗[39m Flutter plugin not installed; this adds Flutter specific functionality.
+    [31m✗[39m Dart plugin not installed; this adds Dart specific functionality.
+    [32m•[39m For information about installing plugins, see
+      https://flutter.dev/intellij-setup/#installing-the-plugins
+
+[32m[✓][39m VS Code (version 1.39.2)
+    [32m•[39m VS Code at /Applications/Visual Studio Code.app/Contents
+    [32m•[39m Flutter extension version 3.5.1
+
+[32m[✓][39m Connected device (1 available)
+    [32m•[39m iPhone 11 Pro Max • E1D42F2C-8946-4E73-9AB1-8E78706ABF21 • ios • com.apple.CoreSimulator.SimRuntime.iOS-13-2
+      (simulator)
+
+[33m![39m Doctor found issues in 3 categories.
+```

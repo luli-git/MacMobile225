@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>970807444423-5vr911taop3me32pm7snioq75dh9e7nl.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.970807444423-5vr911taop3me32pm7snioq75dh9e7nl</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDZzFvikHFREQVdjgc2hrR3nlN9FXHtDSg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>970807444423</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.macMobileAttempt</string>
+	<key>PROJECT_ID</key>
+	<string>macmobile-644ab</string>
+	<key>STORAGE_BUCKET</key>
+	<string>macmobile-644ab.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:970807444423:ios:0c04ca485f98b556348fe2</string>
+	<key>DATABASE_URL</key>
+	<string>https://macmobile-644ab.firebaseio.com</string>
+</dict>
+</plist>

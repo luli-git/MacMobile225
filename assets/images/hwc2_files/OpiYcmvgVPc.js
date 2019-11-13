@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["qzS6W"]); }
+
+__d("AdsLWIAutomotiveInventoryCreationWelcomeLayout",["fbt","AdsLWISingleColumnLayout","JSResource"],(function(a,b,c,d,e,f,g){"use strict";__p&&__p();a=function(a){__p&&__p();babelHelpers.inheritsLoose(c,a);function c(){return a.apply(this,arguments)||this}var d=c.prototype;d.getMainAreaComponents=function(){return[{component:b("JSResource")("AdsLWIAutomotiveInventoryCreationWelcomePaneContainer.react").__setRef("AdsLWIAutomotiveInventoryCreationWelcomeLayout")}]};d.getTitle=function(){return g._("Automotive Inventory Ad")};d.getStepName=function(){return g._("Welcome")};return c}(b("AdsLWISingleColumnLayout"));e.exports=new a()}),null);

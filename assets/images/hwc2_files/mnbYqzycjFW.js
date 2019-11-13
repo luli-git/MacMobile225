@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["6Lzd6"]); }
+
+__d("FocusWithinHandler.react",["React","ReactEventsFocus","react"],(function(a,b,c,d,e,f){__p&&__p();var g,h=b("React").useState,i=b("ReactEventsFocus").useFocusWithin,j=(g||(g=b("react"))).unstable_createScope();function a(a){__p&&__p();var c,d=a.children,e=a.onFocusChange,f=a.onFocusVisibleChange;a=a.testOnly;c=h((c=a&&a.focus)!=null?c:!1);var k=c[0],l=c[1];a=h((c=a&&a.focusVisible)!=null?c:!1);c=a[0];var m=a[1];a=e?function(a){l(a),e(a)}:l;var n=f?function(a){m(a),f(a)}:m;a=i({onFocusWithinChange:a,onFocusWithinVisibleChange:n});return(g||(g=b("react"))).jsx(j,{listeners:a,children:typeof d==="function"?d(k,c):d})}e.exports=a}),null);

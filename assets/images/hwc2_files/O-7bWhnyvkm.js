@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["ELxOM"]); }
+
+__d("AdsLWIEmptyVehiclesCatalogDataProviderPlugin",["AdsGraphAPI","loadObjectMapProvider","mapObject","objectToMap"],(function(a,b,c,d,e,f){"use strict";var g;a={initialState:b("loadObjectMapProvider")(function(a){return b("AdsGraphAPI").get(e.id).objects("product_catalog",a).get({fields:["product_count"]}).then(function(a){return b("objectToMap")((g||(g=b("mapObject")))(a,function(a){return a!=null&&a.product_count===0}))})})};e.exports=a}),null);

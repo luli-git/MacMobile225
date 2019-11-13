@@ -1,0 +1,4 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["xGnKE"]); }
+
+__d("AdsInsightsUnitLabelsDynamic",["AdsInsightsUnitLabels"],(function(a,b,c,d,e,f){e.exports=b("AdsInsightsUnitLabels")}),null);
+__d("CollapsibleSectionController",["cx","CSS","DOMScroll","Event"],(function(a,b,c,d,e,f,g){"use strict";__p&&__p();a=function(){__p&&__p();function a(c,d,e,f){var g=this;this.$1=e;this.$2=d;b("Event").listen(e,"click",function(){return g.$3()});c&&a.controllers.set(c,this);f&&(document.location.href.indexOf("#"+f)>-1&&(b("CSS").addClass(d,"_1kar"),b("DOMScroll").scrollTo(d)))}var c=a.prototype;c.$3=function(){b("CSS").toggleClass(this.$2,"_1kar")};a.setupLink=function(c,d){b("Event").listen(d,"click",function(){return a.$4(c)})};a.$4=function(c){c=a.controllers.get(c);if(!c)return;c=c.$2;b("CSS").addClass(c,"_1kar");b("DOMScroll").scrollTo(c)};return a}();a.controllers=new Map();e.exports=a}),null);
