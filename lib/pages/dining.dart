@@ -1,5 +1,9 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+final databaseReference = Firestore.instance;
 
 
 class DiningOptions{
@@ -9,6 +13,7 @@ class DiningOptions{
   final String openhours;
   final Function urlTap;
   DiningOptions({this.diningname, this.image, this.status, this.openhours,this.urlTap});
+
 
   static _launchURLgrille() async {
     const url = 'https://macalester.cafebonappetit.com/cafe/cafe-mac-grill/';
@@ -70,6 +75,11 @@ class DiningOptions{
   static List<DiningOptions> allDiningPlaces(){
     var lstOfDiningPlaces = new List<DiningOptions>();
 
+  
+
+
+
+
     lstOfDiningPlaces.add(new DiningOptions(diningname: "Cafe Mac", image: "cafemacbeauti.jpeg", status: "OPEN", openhours: "7:30-9:30 | 11:00-13:30 | 17:00-20:00",urlTap: _launchURLcafeMac));
     lstOfDiningPlaces.add(new DiningOptions(diningname: "Loch", image: "loch.jpg", status: "CLOSED", openhours: "11:00-13:30", urlTap: _launchURLLoch));
     lstOfDiningPlaces.add(new DiningOptions(diningname: "Atrium", image: "atrium.jpg", status: "CLOSED", openhours: "10:30-13:30 | 17:00-19:00", urlTap: _launchURLAtrium));
@@ -79,7 +89,27 @@ class DiningOptions{
 
     return lstOfDiningPlaces;
     }
+    static Future<List<DiningOptions>> _getEventsFromFirestore() async {
+CollectionReference ref = Firestore.instance.collection('events');
+QuerySnapshot eventsQuery = await ref
+    .where("time", isGreaterThan: new DateTime.now().millisecondsSinceEpoch)
+    .where("food", isEqualTo: true)
+    .getDocuments();
+
+  HashMap<String, DiningOptions> eventsHashMap = new HashMap<String, DiningOptions>();
+
+  eventsQuery.documents.forEach((document) {
+    eventsHashMap.putIfAbsent(document['id'], () => new DiningOptions(
+        diningname: document['name'],
+        openhours: document['time'],
+        image: "cafemacbeauti.jpeg",
+        status: "OPEN",
+        urlTap: _launchURLcafeMac));});
+        }
+
 }
+
+
 
 class DiningTab extends StatelessWidget {
   final List<DiningOptions> _allDiningOptions = DiningOptions.allDiningPlaces();

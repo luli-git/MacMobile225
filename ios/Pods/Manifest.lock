@@ -76,7 +76,7 @@ PODS:
     - leveldb-library (~> 1.22)
     - nanopb (~> 0.3.901)
     - Protobuf (>= 3.9.2, ~> 3.9)
-  - FirebaseInstanceID (4.2.5):
+  - FirebaseInstanceID (4.2.7):
     - FirebaseCore (~> 6.0)
     - GoogleUtilities/Environment (~> 6.0)
     - GoogleUtilities/UserDefaults (~> 6.0)
@@ -190,7 +190,7 @@ SPEC CHECKSUMS:
   Firebase: 5e6b7b12bf9adb90986688edc06b156c37e109cd
   firebase_analytics: 2f3ab38886ff9d915b076d5aae2f964dc5ce7549
   firebase_auth: 3735c80c0a290fd04a34e9bbbecbeec8f79a216a
-  firebase_core: ebf6a934345d646bf7820a6685427bb3741f01ed
+  firebase_core: ae55ea92448ec8675d325da4db22cf3b4d58a54d
   FirebaseAnalytics: 0e3ecff2c5d86070f7d4325e21f1edabfbd558dc
   FirebaseAuth: c66e990f79d1d3429165391f6cd70ace6143c25e
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
@@ -198,7 +198,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: af29e43048607588c050889d19204f4d7b758c9f
   FirebaseCoreDiagnosticsInterop: 6829da2b8d1fc795ff1bd99df751d3788035d2cb
   FirebaseFirestore: 5a9e9a14305336e8d1a4f915a45ecf0f5d6dcaec
-  FirebaseInstanceID: 550df9be1f99f751d8fcde3ac342a1e21a0e6c42
+  FirebaseInstanceID: ebd2ea79ee38db0cb5f5167b17a0d387e1cc7b6e
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   GoogleAppMeasurement: 434cc7be25e71dc04b8d0e3079125127b330e84a
   GoogleDataTransport: f6fe28f43e3a300736854260961ad485b473edc5
