@@ -101,7 +101,7 @@ QuerySnapshot eventsQuery = await ref
   eventsQuery.documents.forEach((document) {
     eventsHashMap.putIfAbsent(document['id'], () => new DiningOptions(
         diningname: document['name'],
-        openhours: document['time'],
+        openhours: document['montothur'],
         image: "cafemacbeauti.jpeg",
         status: "OPEN",
         urlTap: _launchURLcafeMac));});

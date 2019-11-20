@@ -1,5 +1,4 @@
 import 'dart:collection';
-
 import 'package:flutter/material.dart';
 import 'package:googleapis/fcm/v1.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -115,7 +114,9 @@ class HoursTab extends StatelessWidget {
     },
         body: new Padding(
             padding: EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 0.0),
-            child: getHomePageBody(context))));
+            child: getHomePageBody(context))
+            )
+            );
   }
 
 
