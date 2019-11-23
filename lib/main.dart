@@ -8,6 +8,9 @@ import 'pages/facility_hours.dart';
 
 
 void main() {
+
+  EventApi.initEvents();
+  
   runApp(MaterialApp(
       // Title
       title: "Using Tabs",
