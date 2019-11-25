@@ -5,6 +5,7 @@ import 'pages/resources.dart';
 import 'pages/dining.dart';
 import 'pages/events.dart';
 import 'pages/facility_hours.dart';
+import 'pages/eventAPI.dart';
 
 
 void main() {
