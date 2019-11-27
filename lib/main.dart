@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mac_mobile_attempt/pages/eventAPI.dart';
 import 'package:mac_mobile_attempt/pages/events.dart';
 import 'package:mac_mobile_attempt/pages/home.dart';
 import 'pages/resources.dart';
@@ -6,19 +7,23 @@ import 'pages/dining.dart';
 import 'pages/events.dart';
 import 'pages/facility_hours.dart';
 
-
 void main() {
+  print("whwhwh");
+  
+   
+
   runApp(MaterialApp(
+    
       // Title
       title: "Using Tabs",
       // Home
       home: MyHome()));
+
 }
 
 class MyHome extends StatefulWidget {
   @override
   MyHomeState createState() => MyHomeState();
-
 }
 
 // SingleTickerProviderStateMixin is used for animation
@@ -43,18 +48,32 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+      EventApi.initEvents();
+
     return Scaffold(
       // Appbar
-       appBar: AppBar(
-         // Title
-         title: Image.asset('assets/images/maclogo.jpg',height: 45,), centerTitle: true,
-         // Set the background color of the App Bar
-         backgroundColor: Color(0xFF01426A),
-       ),
+      appBar: AppBar(
+        // Title
+        title: Image.asset(
+          'assets/images/maclogo.jpg',
+          height: 45,
+        ),
+        centerTitle: true,
+        // Set the background color of the App Bar
+        backgroundColor: Color(0xFF01426A),
+      ),
       // Set the TabBar view as the body of the Scaffold
       body: TabBarView(
+        
         // Add tabs as widgets
-        children: <Widget>[HomeTab(), DiningTab(), HoursTab(), EventTab(),ResourcesTab()],
+        children: <Widget>[
+          
+          HomeTab(),
+          DiningTab(),
+          HoursTab(),
+          EventTab(),
+          ResourcesTab()
+        ],
         // set the controller
         controller: controller,
       ),
@@ -66,26 +85,25 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
         child: TabBar(
           tabs: <Tab>[
             Tab(
-            text: "Home",
-            icon: Icon(Icons.home),
-          ),
+              text: "Home",
+              icon: Icon(Icons.home),
+            ),
             Tab(
-            text: "Dining",
-            icon: Icon(Icons.fastfood),
-          ),
-          Tab(
-            text: "Hours",
-            icon: Icon(Icons.access_time),
-          ),
-
-          Tab(
-            text: "Events",
-            icon: Icon(Icons.calendar_today),
-          ),
-          Tab(
-            text: "Resources",
-            icon: Icon(Icons.school),
-          ),
+              text: "Dining",
+              icon: Icon(Icons.fastfood),
+            ),
+            Tab(
+              text: "Hours",
+              icon: Icon(Icons.access_time),
+            ),
+            Tab(
+              text: "Events",
+              icon: Icon(Icons.calendar_today),
+            ),
+            Tab(
+              text: "Resources",
+              icon: Icon(Icons.school),
+            ),
           ],
           controller: controller,
         ),

@@ -9,39 +9,28 @@ import 'eventAPI.dart';
 
 //
 
-
-
 const _SCOPES = [CalendarApi.CalendarScope];
 
-
-
-
-
-
-
-class EventCreate{
+class EventCreate {
   final String eventName;
   final EventDateTime eventStartDate;
   final EventDateTime eventEndDate;
   final String eventLocation;
   final String category;
 
-  EventCreate({this.eventName, this.eventStartDate, this.eventEndDate, this.eventLocation, this.category});
-
-
-
+  EventCreate(
+      {this.eventName,
+      this.eventStartDate,
+      this.eventEndDate,
+      this.eventLocation,
+      this.category});
 }
-
-
-
-
 
 //
 //List<Event>
 //
 
-
-class EventTab extends StatefulWidget{
+class EventTab extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     //print(EventCreate.allEvents().length);
@@ -49,52 +38,41 @@ class EventTab extends StatefulWidget{
   }
 }
 
-
-
-
-
-
-
 class EventTabStateful extends State<EventTab> {
-
   //final List<EventCreate> _allEvents = EventCreate.allEvents();
 
-
-  static String getLocation(int index){
-    if (EventApi.getAllEvents()[index].eventLocation != null){
-      return EventApi.getAllEvents()[index].eventLocation ;
-    } else{
+  static String getLocation(int index) {
+    if (EventApi.getAllEvents()[index].eventLocation != null) {
+      return EventApi.getAllEvents()[index].eventLocation;
+    } else {
       return "Macalester College";
     }
   }
 
-  static String getStartTime(int index){
-    if (//EventApi.getAllEvents()[index].eventStartDate.date != null &&
-    EventApi.getAllEvents()[index].eventStartDate.dateTime != null &&
-        EventApi.getAllEvents()[index].eventStartDate.dateTime.hour != 00 ){
-      return EventApi.getAllEvents()[index].eventStartDate.date.toString() + ":";
-    } else{
+  static String getStartTime(int index) {
+    if ( //EventApi.getAllEvents()[index].eventStartDate.date != null &&
+        EventApi.getAllEvents()[index].eventStartDate.dateTime != null &&
+            EventApi.getAllEvents()[index].eventStartDate.dateTime.hour != 00) {
+      return EventApi.getAllEvents()[index].eventStartDate.date.toString() +
+          ":";
+    } else {
       return "All Day";
     }
   }
 
-  static String getEndTime(int index){
-    if (//EventApi.getAllEvents()[index].eventEndDate.date != null &&
-    EventApi.getAllEvents()[index].eventEndDate.dateTime != null &&
-        EventApi.getAllEvents()[index].eventEndDate.dateTime.hour != 00){
+  static String getEndTime(int index) {
+    if ( //EventApi.getAllEvents()[index].eventEndDate.date != null &&
+        EventApi.getAllEvents()[index].eventEndDate.dateTime != null &&
+            EventApi.getAllEvents()[index].eventEndDate.dateTime.hour != 00) {
       return EventApi.getAllEvents()[index].eventEndDate.date.toString();
-    } else{
+    } else {
       return "";
     }
   }
 
-
-
-
-
   List<String> reportList = [
     "Academic",
-    "Alumni",
+    // "Alumni",
     "Art, Music, Theater",
     "Athletic",
     "Campus",
@@ -105,19 +83,12 @@ class EventTabStateful extends State<EventTab> {
     "Student Org",
   ];
 
-
-
-
-
-
-
   _showReportDialog() {
     showDialog(
         context: context,
         builder: (BuildContext context) {
           //Here we will build the content of the dialog
           return AlertDialog(
-
             title: Text("Categories"),
             content: MultiSelectChip(
               reportList,
@@ -139,18 +110,17 @@ class EventTabStateful extends State<EventTab> {
 
   DateTime selectedDate = DateTime.now();
 
-  Future<Null> _selectDate(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime(2019,11,9),
-        lastDate: DateTime(2021));
-    if (picked != null && picked != selectedDate)
-      setState(() {
-        selectedDate = picked;
-      });
-  }
-
+  // Future<Null> _selectDate(BuildContext context) async {
+  //   final DateTime picked = await showDatePicker(
+  //       context: context,
+  //       initialDate: selectedDate,
+  //       firstDate: DateTime(2019, 11, 9),
+  //       lastDate: DateTime(2021));
+  //   if (picked != null && picked != selectedDate)
+  //     setState(() {
+  //       selectedDate = picked;
+  //     });
+  // }
 
   //final List<Event> _allEvents = Event.allEvents();
   //EventTab(){}
@@ -166,22 +136,22 @@ class EventTabStateful extends State<EventTab> {
                 children: <Widget>[
                   RaisedButton(
                       color: Color(0xFF01426A),
-                      child: Text("Select Categories",
+                      child: Text(
+                        "Select Categories",
                         style: TextStyle(color: prefix0.Colors.white),
                       ),
                       onPressed: () => _showReportDialog(),
                       shape: RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0))
-                  ),
-                  RaisedButton(
-                      color: Color(0xFF01426A),
-                      onPressed: () => _selectDate(context),
-                      child: Text('Select date',
-                        style: TextStyle(color: prefix0.Colors.white),
-                      ),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0))
-                  ),
+                          borderRadius: new BorderRadius.circular(30.0))),
+                  // RaisedButton(
+                  //     color: Color(0xFF01426A),
+                  //     onPressed: () => _selectDate(context),
+                  //     child: Text(
+                  //       'Select date',
+                  //       style: TextStyle(color: prefix0.Colors.white),
+                  //     ),
+                  //     shape: RoundedRectangleBorder(
+                  //         borderRadius: new BorderRadius.circular(30.0))),
                   //getHomePageBody(context)
                 ],
               ),
@@ -191,20 +161,16 @@ class EventTabStateful extends State<EventTab> {
             ],
           ),
         );
-      },);
+      },
+    );
   }
 
-
-
   getHomePageBody(BuildContext context) {
-    print(EventApi.getAllEvents().length);
-
-
+    //print(_allEvents.length);
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: 2,
+      itemCount: EventApi.getAllEvents().length,
       itemBuilder: _getItemUI,
-      
       //padding: EdgeInsets.all(0.0),
     );
   }
@@ -218,11 +184,20 @@ class EventTabStateful extends State<EventTab> {
         decoration: BoxDecoration(
           color: prefix0.Colors.white,
           border: Border.all(
-            color: prefix0.Colors.grey[200], style: BorderStyle.solid,),
+            color: prefix0.Colors.grey[200],
+            style: BorderStyle.solid,
+          ),
           borderRadius: BorderRadius.all(Radius.circular(15)),
           boxShadow: [
-            BoxShadow(color: prefix0.Colors.grey[300],blurRadius: 15.0, spreadRadius: 5.0,
-              offset: Offset(5.0,5.0,),)
+            BoxShadow(
+              color: prefix0.Colors.grey[300],
+              blurRadius: 15.0,
+              spreadRadius: 5.0,
+              offset: Offset(
+                5.0,
+                5.0,
+              ),
+            )
           ],
         ),
         child: new Column(
@@ -240,18 +215,15 @@ class EventTabStateful extends State<EventTab> {
                         topRight: Radius.circular(15.0)),
                   ),
                   child: Text(
-                    getStartTime(index)  + getEndTime(index),
-
+                    getStartTime(index) + getEndTime(index),
                     style: TextStyle(color: prefix0.Colors.white, fontSize: 18),
                     textAlign: TextAlign.left,
-
                   ),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.all(7),
               ),
-
               Container(
                 padding: const EdgeInsets.only(bottom: 8),
                 child: Text(
@@ -266,17 +238,16 @@ class EventTabStateful extends State<EventTab> {
                 ),
               ),
               Icon(Icons.place),
-              Text( getLocation(index),
+              Text(
+                getLocation(index),
 
                 //"Location",
                 style: TextStyle(
                   color: prefix0.Colors.grey[500],
                   fontSize: 13,
-
                 ),
                 textAlign: TextAlign.center,
               ),
             ]));
-
   }
 }

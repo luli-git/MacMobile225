@@ -4,11 +4,8 @@ import 'package:googleapis/calendar/v3.dart';
 import 'package:googleapis/calendar/v3.dart' as prefix1;
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:flutter_multiselect/flutter_multiselect.dart';
-import 'multiSelectChip.dart';
+import 'package:mac_mobile_attempt/helpers/multiSelectChip.dart';
 import 'events.dart';
-
-
-
 
 final _credentials = new ServiceAccountCredentials.fromJson(r'''
 {
@@ -20,32 +17,28 @@ final _credentials = new ServiceAccountCredentials.fromJson(r'''
   "type": "service_account",
   "singleEvents": "true",
   "orderBy": "startTime",
-  "maxResults" : "2500"
+  "maxResults" : "2000"
  
   }''');
 
 const _SCOPES = [CalendarApi.CalendarScope];
 
-
-
-class EventApi{
-
+class EventApi {
   static List<EventCreate> _allEvents = [];
 
-
-
-  static void  initEvents() {
-
-    //listOfEvents.add(new EventCreate(eventName: "event 1", eventStartTime: "7:00", eventEndTime: "8:00", eventLocation: "Olin Rice", eventDate: "November 12"));
+  static void initEvents() {
+    // listOfEvents.add(new EventCreate(eventName: "event 1", eventStartTime: "7:00", eventEndTime: "8:00", eventLocation: "Olin Rice", eventDate: "November 12"));
     //listOfEvents.add(new EventCreate(eventName: "event 2", eventStartTime: "7:00", eventEndTime: "8:00", eventLocation: "Olin Rice", eventDate: "November 12"));
     //listOfEvents.add(new EventCreate(eventName: "event 3", eventStartTime: "7:00", eventEndTime: "8:00", eventLocation: "Olin Rice", eventDate: "November 12"));
     clientViaServiceAccount(_credentials, _SCOPES).then((client) {
       var calendar = new CalendarApi(client);
-      calendar.events.list(
-          '22b3ifdsq64j7c3uvk17523lq8gts1ja@import.calendar.google.com').then((
-          events) {
+      calendar.events
+          .list('22b3ifdsq64j7c3uvk17523lq8gts1ja@import.calendar.google.com')
+          .then((events) {
         for (Event event in events.items) {
-          _allEvents.add(new EventCreate(eventName: event.summary,
+          // print(event.start.toJson());
+          _allEvents.add(new EventCreate(
+            eventName: event.summary,
             eventStartDate: event.start,
             eventEndDate: event.end,
             eventLocation: event.location,
@@ -56,11 +49,10 @@ class EventApi{
     });
   }
 
+  static List<EventCreate> getAllEvents() {
+    // _allEvents.sort();
+        // print(_allEvents[1000].eventName.toString());
 
-  static List<EventCreate> getAllEvents(){
-    //_allEvents.sort();
     return _allEvents;
   }
-
-
 }
