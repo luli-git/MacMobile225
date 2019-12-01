@@ -219,8 +219,13 @@ class DiningTab extends StatelessWidget {
             expandedHeight: 200.0,
             floating: false,
             pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              centerTitle: false,
+            snap:false,
+            flexibleSpace: 
+
+            FlexibleSpaceBar(
+
+            centerTitle: false,
+              
               title: Text(
                 "Dining",
                 style: TextStyle(

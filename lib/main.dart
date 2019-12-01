@@ -9,16 +9,14 @@ import 'pages/facility_hours.dart';
 import 'pages/eventAPI.dart';
 
 void main() {
-
   EventApi.initEvents();
-  
+
   runApp(MaterialApp(
-    
+
       // Title
       title: "Using Tabs",
       // Home
       home: MyHome()));
-
 }
 
 class MyHome extends StatefulWidget {
@@ -35,8 +33,15 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
 
+    controller = new TabController(vsync: this, length: 5);
+    controller.addListener(_handleTabSelection);
+  }
+
+  void _handleTabSelection() {
+    setState(() {});
+
     // Initialize the Tab Controller
-    controller = TabController(length: 5, vsync: this);
+    // controller = TabController(length: 5, vsync: this);
   }
 
   @override
@@ -48,26 +53,25 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-      EventApi.initEvents();
+    EventApi.initEvents();
 
     return Scaffold(
       // Appbar
-      appBar: AppBar(
-        // Title
-        title: Image.asset(
-          'assets/images/maclogo.jpg',
-          height: 45,
-        ),
-        centerTitle: true,
-        // Set the background color of the App Bar
-        backgroundColor: Color(0xFF01426A),
-      ),
+      // appBar: AppBar(
+      //   // Title
+      //   title: Image.asset(
+      //     'assets/images/mac-primary-logo-spot blue.png',
+      //     height: 45,
+      //   ),
+      //   centerTitle: true,
+      //   // Set the background color of the App Bar
+      //   backgroundColor : Color(0xFF501426A).withOpacity(0.4),
+        
+      // ),
       // Set the TabBar view as the body of the Scaffold
       body: TabBarView(
-        
         // Add tabs as widgets
         children: <Widget>[
-          
           HomeTab(),
           DiningTab(),
           HoursTab(),
@@ -80,31 +84,57 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
       // Set the bottom navigation bar
       bottomNavigationBar: Material(
         // set the color of the bottom navigation bar
-        color: Color(0xFF01426A),
+        color: Colors.transparent, //Color(0xFF01426A),
         // set the tab bar as the child of bottom navigation bar
         child: TabBar(
-          tabs: <Tab>[
-            Tab(
-              text: "Home",
-              icon: Icon(Icons.home),
+          tabs: [
+            Container(
+              height: 60.0,
+              child: new Tab(
+                  text: "Home",
+                  icon: Icon(Icons.home,
+                      color: controller.index == 0
+                          ? Color(0xFF01426A)
+                          : Color(0xFF5B6770))),
             ),
-            Tab(
-              text: "Dining",
-              icon: Icon(Icons.fastfood),
-            ),
-            Tab(
-              text: "Hours",
-              icon: Icon(Icons.access_time),
-            ),
-            Tab(
-              text: "Events",
-              icon: Icon(Icons.calendar_today),
-            ),
-            Tab(
-              text: "Resources",
-              icon: Icon(Icons.school),
-            ),
+            Container(
+                height: 60,
+                child: Tab(
+                    text: "Dining",
+                    icon: Icon(Icons.fastfood,
+                        color: controller.index == 1
+                            ? Color(0xFF01426A)
+                            : Color(0xFF5B6770)))),
+            Container(
+                height: 60,
+                child: Tab(
+                    text: "Hours",
+                    icon: Icon(Icons.access_time,
+                        color: controller.index == 2
+                            ? Color(0xFF01426A)
+                            : Color(0xFF5B6770)))),
+            Container(
+                height: 60,
+                child: Tab(
+                    text: "Events",
+                    icon: Icon(Icons.calendar_today,
+                        color: controller.index == 3
+                            ? Color(0xFF01426A)
+                            : Color(0xFF5B6770)))),
+            Container(
+                height: 60,
+                width: 100,
+                child: Tab(
+                    text: "Resources",
+                    icon: Icon(Icons.school,
+                        color: controller.index == 4
+                            ? Color(0xFF01426A)
+                            : Color(0xFF5B6770)))),
           ],
+          labelColor: Color(0xFF01426A),
+          labelPadding: EdgeInsets.all(1),
+          unselectedLabelColor: Color(0xFF5B6770),
+          // labelStyle: TextStyle(fontSize: 15),
           controller: controller,
         ),
       ),
