@@ -64,6 +64,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.2"
+  date_utils:
+    dependency: "direct dev"
+    description:
+      name: date_utils
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0+2"
   firebase_analytics:
     dependency: "direct main"
     description:
@@ -144,6 +151,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.0"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.15.8"
   matcher:
     dependency: transitive
     description:
@@ -173,6 +187,7 @@ packages:
     source: hosted
     version: "1.8.0+1"
   quiver:
+<<<<<<< HEAD
     dependency: transitive
     description:
       name: quiver
@@ -180,19 +195,27 @@ packages:
     source: hosted
     version: "2.0.5"
   quiver_hashcode:
+=======
+>>>>>>> dccc6a32ac074f9993aa637a297f2d676cc16829
     dependency: transitive
     description:
       name: quiver_hashcode
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "2.0.0"
   shared_preferences:
     dependency: "direct main"
+=======
+    version: "2.0.5"
+  quiver_hashcode:
+    dependency: transitive
+>>>>>>> dccc6a32ac074f9993aa637a297f2d676cc16829
     description:
-      name: shared_preferences
+      name: quiver_hashcode
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.3"
+    version: "2.0.0"
   sky_engine:
     dependency: transitive
     description: flutter

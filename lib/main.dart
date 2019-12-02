@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:googleapis/calendar/v3.dart' as prefix0;
+import 'package:mac_mobile_attempt/pages/calendar_tile.dart';
 import 'package:mac_mobile_attempt/pages/eventAPI.dart';
 import 'package:mac_mobile_attempt/pages/events.dart';
+import 'package:mac_mobile_attempt/pages/flutter_clean_calendar.dart';
 import 'package:mac_mobile_attempt/pages/home.dart';
 import 'pages/resources.dart';
 import 'pages/dining.dart';
 import 'pages/events.dart';
 import 'pages/facility_hours.dart';
 import 'pages/eventAPI.dart';
+//import 'pages/calendar.dart';
 
 void main() {
   EventApi.initEvents();

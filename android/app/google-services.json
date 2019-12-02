@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "970807444423",
+    "firebase_url": "https://macmobile-644ab.firebaseio.com",
+    "project_id": "macmobile-644ab",
+    "storage_bucket": "macmobile-644ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970807444423:android:135ec72b7c68fbed348fe2",
+        "android_client_info": {
+          "package_name": "com.example.mac_mobile_attempt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "970807444423-saus8gomukrhsgedptc4pnljkcbn2r0t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEow009Zj20O60gBYfkk5JhHBniljm8Bo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "970807444423-saus8gomukrhsgedptc4pnljkcbn2r0t.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "970807444423-5vr911taop3me32pm7snioq75dh9e7nl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.macMobileAttempt"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

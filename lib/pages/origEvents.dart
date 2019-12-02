@@ -4,7 +4,7 @@ import 'package:googleapis/calendar/v3.dart';
 import 'package:googleapis/calendar/v3.dart' as prefix1;
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:flutter_multiselect/flutter_multiselect.dart';
-import 'package:mac_mobile_attempt/helpers/multiSelectChip.dart';
+import 'multiSelectChip.dart';
 import 'eventAPI.dart';
 
 //

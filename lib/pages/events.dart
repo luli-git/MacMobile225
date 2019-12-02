@@ -4,7 +4,7 @@ import 'package:googleapis/calendar/v3.dart';
 import 'package:googleapis/calendar/v3.dart' as prefix1;
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:flutter_multiselect/flutter_multiselect.dart';
-import 'package:mac_mobile_attempt/helpers/multiSelectChip.dart';
+import 'multiSelectChip.dart';
 import 'eventAPI.dart';
 
 //
@@ -19,7 +19,7 @@ const _SCOPES = [CalendarApi.CalendarScope];
 
 
 
-class EventCreate{
+class EventCreate {
   final String eventName;
   final EventDateTime eventStartDate;
   final EventDateTime eventEndDate;
@@ -27,8 +27,6 @@ class EventCreate{
   final String category;
 
   EventCreate({this.eventName, this.eventStartDate, this.eventEndDate, this.eventLocation, this.category});
-
-
 
 }
 
@@ -72,9 +70,25 @@ class EventTabStateful extends State<EventTab> {
     if (//EventApi.getAllEvents()[index].eventStartDate.date != null &&
     EventApi.getAllEvents()[index].eventStartDate.dateTime != null &&
         EventApi.getAllEvents()[index].eventStartDate.dateTime.hour != 00 ){
-      return EventApi.getAllEvents()[index].eventStartDate.date.toString() + ":";
+      return EventApi.getAllEvents()[index].eventStartDate.dateTime.hour.toString() + ":";
     } else{
       return "All Day";
+    }
+  }
+
+  static String getStartTimeMinute(int index){
+    if (//EventApi.getAllEvents()[index].eventStartDate.date != null &&
+    EventApi.getAllEvents()[index].eventStartDate.dateTime != null &&
+        EventApi.getAllEvents()[index].eventStartDate.dateTime.hour != 00 ) {
+      if (EventApi.getAllEvents()[index].eventStartDate.dateTime.minute == 0) {
+        return "00 - ";
+      }
+      else {
+        return EventApi.getAllEvents()[index].eventStartDate.dateTime.minute
+            .toString() + " - ";
+      }
+    }else{
+      return "";
     }
   }
 
@@ -82,7 +96,50 @@ class EventTabStateful extends State<EventTab> {
     if (//EventApi.getAllEvents()[index].eventEndDate.date != null &&
     EventApi.getAllEvents()[index].eventEndDate.dateTime != null &&
         EventApi.getAllEvents()[index].eventEndDate.dateTime.hour != 00){
-      return EventApi.getAllEvents()[index].eventEndDate.date.toString();
+      return EventApi.getAllEvents()[index].eventEndDate.dateTime.hour.toString() + ":";
+    } else{
+      return "";
+    }
+  }
+
+  static String getEndTimeMinute(int index){
+    if (//EventApi.getAllEvents()[index].eventEndDate.date != null &&
+    EventApi.getAllEvents()[index].eventEndDate.dateTime != null &&
+        EventApi.getAllEvents()[index].eventEndDate.dateTime.hour != 00){
+      if (EventApi.getAllEvents()[index].eventEndDate.dateTime.minute == 0) {
+        return "00";
+      }
+      else {
+        return EventApi.getAllEvents()[index].eventEndDate.dateTime.minute
+            .toString();
+      }
+    } else{
+      return "";
+    }
+  }
+
+  static String getMonth(int index){
+    if (EventApi.getAllEvents()[index].eventStartDate.date.month != null) {
+      return EventApi.getAllEvents()[index].eventStartDate.date.month
+          .toString();
+    } else{
+      return "";
+    }
+    }
+
+  static String getDay(int index){
+    if (EventApi.getAllEvents()[index].eventStartDate.date.day != null) {
+      return EventApi.getAllEvents()[index].eventStartDate.date.day
+          .toString();
+    } else{
+      return "";
+    }
+  }
+  
+  static String getYear(int index){
+    if (EventApi.getAllEvents()[index].eventStartDate.date.year != null) {
+      return EventApi.getAllEvents()[index].eventStartDate.date.year
+          .toString();
     } else{
       return "";
     }
@@ -143,7 +200,7 @@ class EventTabStateful extends State<EventTab> {
     final DateTime picked = await showDatePicker(
         context: context,
         initialDate: selectedDate,
-        firstDate: DateTime(2019,11,9),
+        firstDate: DateTime(2019,11,27),
         lastDate: DateTime(2021));
     if (picked != null && picked != selectedDate)
       setState(() {
@@ -203,7 +260,7 @@ class EventTabStateful extends State<EventTab> {
 
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: 2,
+      itemCount: 250,
       itemBuilder: _getItemUI,
       
       //padding: EdgeInsets.all(0.0),
@@ -241,8 +298,7 @@ class EventTabStateful extends State<EventTab> {
                         topRight: Radius.circular(15.0)),
                   ),
                   child: Text(
-                    getStartTime(index)  + getEndTime(index),
-
+                    getStartTime(index) + getStartTimeMinute(index)  + getEndTime(index) + getEndTimeMinute(index) + "             " + getMonth(index) + "/" + getDay(index) + "/" + getYear(index),
                     style: TextStyle(color: prefix0.Colors.white, fontSize: 18),
                     textAlign: TextAlign.left,
 
@@ -267,7 +323,7 @@ class EventTabStateful extends State<EventTab> {
                 ),
               ),
               Icon(Icons.place),
-              Text( getLocation(index),
+              Text(getLocation(index),
 
                 //"Location",
                 style: TextStyle(
