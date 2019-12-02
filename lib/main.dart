@@ -10,7 +10,7 @@ import 'pages/dining.dart';
 import 'pages/events.dart';
 import 'pages/facility_hours.dart';
 import 'pages/eventAPI.dart';
-import 'pages/calendar.dart';
+//import 'pages/calendar.dart';
 
 void main() {
 
@@ -75,7 +75,7 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
           HomeTab(),
           DiningTab(),
           HoursTab(),
-          Calendar(),
+          EventTab(),
           ResourcesTab()
         ],
         // set the controller
