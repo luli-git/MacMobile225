@@ -23,6 +23,8 @@ class HoursTab extends StatelessWidget {
 
 // class _MyHomePageState extends State<MyHomePage> {
   @override
+
+  
   Widget build(BuildContext context) {
     return new Scaffold(
         body: NestedScrollView(
@@ -32,7 +34,9 @@ class HoursTab extends StatelessWidget {
             expandedHeight: 200.0,
             floating: false,
             pinned: true,
-            backgroundColor: Color(0xFF01426A),
+            snap: false,
+            backgroundColor: Color(0xFF501426A).withOpacity(0.9),
+            
             flexibleSpace: FlexibleSpaceBar(
                 centerTitle: false,
                 title: Text("Facility Hours",
@@ -175,7 +179,7 @@ class _ListPageState extends State<ListPage> {
             children: <Widget>[
               Container(
                 height: 80.0,
-                width: 130.0,
+                width: 120.0,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5.0),
                     image: new DecorationImage(
@@ -187,23 +191,23 @@ class _ListPageState extends State<ListPage> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal:
-                          16.0), // horizontal distance between image and text
+                          15.0), // horizontal distance between image and text
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(values['name'],
                           style: TextStyle(
-                              fontSize: 19.0,
+                              fontSize: 18.0,
                               fontFamily: 'Lora',
                               color: Colors.black87)),
                       const Padding(padding: EdgeInsets.only(top: 8.0)),
                       Text(values['phone'],
                           style:
-                              TextStyle(fontSize: 15.0, color: Colors.black87)),
+                              TextStyle(fontSize: 16.0, color: Colors.black87)),
                       const Padding(padding: EdgeInsets.only(top: 8.0)),
                       Text(values['mToTR'],
                           style: TextStyle(
-                              fontSize: 12.0, color: Colors.grey[600])),
+                              fontSize: 14.0, color: Colors.grey[600])),
                     ],
                   ),
                 ),

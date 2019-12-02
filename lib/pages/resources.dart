@@ -6,6 +6,17 @@ class ResourcesTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        // Title
+        title: Image.asset(
+          'assets/images/maclogo.jpg',
+          height: 50,
+        ),
+        centerTitle: true,
+        // Set the background color of the App Bar
+        backgroundColor : Color(0xFF501426A).withOpacity(1),
+        
+      ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(

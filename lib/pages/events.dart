@@ -214,6 +214,7 @@ class EventTabStateful extends State<EventTab> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
+      
       builder: (BuildContext context, BoxConstraints viewportConstraints) {
         return SingleChildScrollView(
           child: Column(

@@ -29,6 +29,7 @@ dependencies:
   firebase_auth: ^0.14.0+5
   cloud_firestore: ^0.12.9+5
   image_ink_well: ^0.1.0
+  shared_preferences: ^0.4.2
 
 
 
@@ -90,6 +91,9 @@ flutter:
     - assets/images/diningheader.jpg
 
     - assets/macLogo2.png
+    - assets/images/mac-primary-logo-spot blue.png
+    - assets/images/mac-sec-horizontal-logo-spot.png
+    - assets/images/mac-sec-horizontal-logo-k.png
     - assets/images/dining.jpg
     - assets/images/grille.jpg
     - assets/images/scottys.jpeg
