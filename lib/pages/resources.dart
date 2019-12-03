@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:image_ink_well/image_ink_well.dart';
 
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+
 class ResourcesTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.instance = ScreenUtil(width: 828, height: 1792, allowFontScaling: true)..init(context);
+
     return Scaffold(
       appBar: AppBar(
         // Title
@@ -25,7 +30,7 @@ class ResourcesTab extends StatelessWidget {
  
                    Container(
                    margin: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                   constraints: BoxConstraints(maxWidth: 500, maxHeight: 100),
+                   constraints: BoxConstraints(maxWidth: ScreenUtil().setWidth(740), maxHeight: 100),
                    child: Ink.image(
                      image: AssetImage('assets/images/security.png'),
                      //height: 200.0,
@@ -41,7 +46,7 @@ class ResourcesTab extends StatelessWidget {
  
                    Container(
                    margin: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 15.0),
-                   constraints: BoxConstraints(maxWidth: 500, maxHeight: 100),
+                   constraints: BoxConstraints(maxWidth: ScreenUtil().setWidth(740), maxHeight: 100),
                    child: Ink.image(
                    image: AssetImage('assets/images/map.png'),
                    fit: BoxFit.fill,
@@ -73,15 +78,15 @@ class ResourcesTab extends StatelessWidget {
                    Container(
  
                    margin: const EdgeInsets.fromLTRB(20.0, 15.0, 10.0, 15.0),
-                   constraints: BoxConstraints(maxWidth: 170, maxHeight: 80),
+                   constraints: BoxConstraints(maxWidth: 200, maxHeight: 80),
  
                    child:
                  
  
                      RoundedRectangleImageInkWell(
                      onPressed: _launchURL1600,
-                     width: 170,
-                     height: 80,
+                     width: ScreenUtil().setWidth(345),
+                     height: ScreenUtil().setWidth(180),
                      borderRadius: BorderRadius.only(
                          topLeft: const Radius.circular(10),
                          topRight: const Radius.circular(10),
@@ -99,13 +104,13 @@ class ResourcesTab extends StatelessWidget {
                  Container(
  
                    margin: const EdgeInsets.fromLTRB(10.0, 15.0, 20.0, 15.0),
-                   constraints: BoxConstraints(maxWidth: 160, maxHeight: 80),
+                   constraints: BoxConstraints(maxWidth: 200, maxHeight: 80),
  
                    child:
                   
                      RoundedRectangleImageInkWell(
                      onPressed: _launchURLmoodle,
-                     width: 170,
+                     width: ScreenUtil().setWidth(345),
                      height: 80,
                      borderRadius: BorderRadius.only(
                          topLeft: const Radius.circular(10),
@@ -138,7 +143,7 @@ class ResourcesTab extends StatelessWidget {
                   
                      RoundedRectangleImageInkWell(
                      onPressed: _launchURLclass,
-                     width: 170,
+                     width: ScreenUtil().setWidth(345),
                      height: 80,
                      borderRadius: BorderRadius.only(
                          topLeft: const Radius.circular(10),
@@ -163,7 +168,7 @@ class ResourcesTab extends StatelessWidget {
                   
                      RoundedRectangleImageInkWell(
                      onPressed: _launchURLacademic,
-                     width: 170,
+                     width: ScreenUtil().setWidth(345),
                      height: 80,
                      borderRadius: BorderRadius.only(
                          topLeft: const Radius.circular(10),
@@ -212,7 +217,7 @@ class ResourcesTab extends StatelessWidget {
                   
                      RoundedRectangleImageInkWell(
                      onPressed: _launchURLorganizations,
-                     width: 170,
+                     width: ScreenUtil().setWidth(345),
                      height: 80,
                      borderRadius: BorderRadius.only(
                          topLeft: const Radius.circular(10),
@@ -241,7 +246,7 @@ class ResourcesTab extends StatelessWidget {
                   
                      RoundedRectangleImageInkWell(
                      onPressed: _launchURLresidence,
-                     width: 170,
+                     width: ScreenUtil().setWidth(345),
                      height: 80,
                      borderRadius: BorderRadius.only(
                          topLeft: const Radius.circular(10),
