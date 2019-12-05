@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+// import 'package:url_launcher/url_launcher.dart';
+import 'ServiceLocator.dart';
+import 'TelService.dart';
 
 
 class Security extends StatelessWidget {
+  final TelService _service = locator<TelService>();
+
+
   @override
   Widget build(BuildContext context) {
     Widget sections = Container(
@@ -61,8 +67,10 @@ class Security extends StatelessWidget {
  
  
  
- 
+
+
  Column _buildsection(BuildContext context, String label1, String label2) {
+     final TelService _service = locator<TelService>();
       return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -101,6 +109,7 @@ class Security extends StatelessWidget {
                       child:
                         IconButton(
                           icon: Icon(Icons.call),
+                          onPressed: ()=> _service.call(label2),
                         )
                     ),
                     ]),
@@ -115,3 +124,16 @@ class Security extends StatelessWidget {
        
                 );
     }
+
+
+// _launchPhone() async {
+//    const url = 'tel:17601290637';
+//    if (await canLaunch(url)) {
+//      await launch(url);
+//    } else {
+//      throw 'Could not launch $url';
+//    }
+// }
+
+
+

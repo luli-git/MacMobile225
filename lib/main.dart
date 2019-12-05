@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:googleapis/calendar/v3.dart' as prefix0;
+import 'package:mac_mobile_attempt/pages/ServiceLocator.dart';
 import 'package:mac_mobile_attempt/pages/calendar_tile.dart';
 import 'package:mac_mobile_attempt/pages/eventAPI.dart';
 import 'package:mac_mobile_attempt/pages/events.dart';
@@ -14,6 +15,8 @@ import 'pages/eventAPI.dart';
 
 void main() {
   EventApi.initEvents();
+
+  setupLocator();
 
   runApp(MaterialApp(
 

@@ -277,7 +277,7 @@ class ResourcesTab extends StatelessWidget {
                                child: Divider(color: Colors.black,)
                              ),      
  
-                          new Text('   Career Devemopment   ',
+                          new Text('   Career Exploration   ',
                           textAlign: TextAlign.left,
                            style: new TextStyle(
                                      fontSize: 20.0,
@@ -288,7 +288,69 @@ class ResourcesTab extends StatelessWidget {
                          ]
                    ),
  
+
+
+               Row(
+               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+               children: [
  
+                 Container(
+ 
+                   margin: const EdgeInsets.fromLTRB(20.0, 15.0, 10.0, 15.0),
+                  
+ 
+                   child:
+                  
+                     RoundedRectangleImageInkWell(
+                     onPressed: _launchURLorganizations,
+                     width: ScreenUtil().setWidth(345),
+                     height: 80,
+                     borderRadius: BorderRadius.only(
+                         topLeft: const Radius.circular(10),
+                         topRight: const Radius.circular(10),
+                         bottomLeft: const Radius.circular(10),
+                         bottomRight: const Radius.circular(10),
+                         ),
+                     image: AssetImage('assets/images/handshake.jpg'),
+                    
+                      
+                   ),
+ 
+                 ),
+ 
+ 
+ 
+                
+ 
+ 
+                 Container(
+ 
+                   margin: const EdgeInsets.fromLTRB(10.0, 15.0, 20.0, 15.0),
+                  
+ 
+                   child:
+                  
+                     RoundedRectangleImageInkWell(
+                     onPressed: _launchURLresidence,
+                     width: ScreenUtil().setWidth(345),
+                     height: 80,
+                     borderRadius: BorderRadius.only(
+                         topLeft: const Radius.circular(10),
+                         topRight: const Radius.circular(10),
+                         bottomLeft: const Radius.circular(10),
+                         bottomRight: const Radius.circular(10),
+                         ),
+                     image: AssetImage('assets/images/appointment.jpg'),
+                    
+                      
+                   ),
+ 
+                 ),
+                
+               ]
+               ),
+
+
                ],
  
        ),
