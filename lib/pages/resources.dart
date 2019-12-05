@@ -304,7 +304,7 @@ class ResourcesTab extends StatelessWidget {
                    child:
                   
                      RoundedRectangleImageInkWell(
-                     onPressed: _launchURLorganizations,
+                     onPressed: _launchURLhandshake,
                      width: ScreenUtil().setWidth(345),
                      height: 80,
                      borderRadius: BorderRadius.only(
@@ -333,7 +333,7 @@ class ResourcesTab extends StatelessWidget {
                    child:
                   
                      RoundedRectangleImageInkWell(
-                     onPressed: _launchURLresidence,
+                     onPressed: _launchURLappointment,
                      width: ScreenUtil().setWidth(345),
                      height: 80,
                      borderRadius: BorderRadius.only(
