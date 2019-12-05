@@ -2,26 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HoursTab extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Demo',
-//       theme: ThemeData(primarySwatch: Colors.blue),
-//       home: MyHomePage(title: "firebase"),
-//     );
-//   }
-// }
 
-// class MyHomePage extends StatefulWidget {
-//   MyHomePage({Key key, this.title}) : super(key: key);
-
-//   final String title;
-
-//   @override
-//   _MyHomePageState createState() => new _MyHomePageState();
-// }
-
-// class _MyHomePageState extends State<MyHomePage> {
   @override
 
   
@@ -128,6 +109,7 @@ class _ListPageState extends State<ListPage> {
   }
 
   Widget _expansionTile(Map values) {
+    
     return ExpansionTile(
       initiallyExpanded: false,
       title: Column(
@@ -167,7 +149,38 @@ class _ListPageState extends State<ListPage> {
   }
 
   Widget _listTile(Map values) {
+    DateTime date = DateTime.now();
+    print("===================");
+    print("weekday is ${date.weekday}");
+    String today;
+    if(values['name'] == 'Pool'){
+      if(date.weekday == 1 || date.weekday == 3 ){
+        today = values['mw'];
+      }
+      if(date.weekday == 2 || date.weekday == 4 ){
+        today = values['ttr'];
+      }
+      if(date.weekday == 5){
+        today = values['friday'];
+      }
+      
+    }
+    else{
+      if(1 <= date.weekday && date.weekday <= 4 ){
+        today = values['mToTR'];
+      }
+      if(date.weekday == 5){
+        today = values['friday'];
+      }
+      if(date.weekday == 6){
+        today = values['saturday'];
+      }
+      if(date.weekday == 7){
+        today = values['sunday'];
+      }
+    }
     return InkWell(
+      
       // onTap: all[index].urlTap,
       child: SafeArea(
         top: false,
@@ -205,7 +218,7 @@ class _ListPageState extends State<ListPage> {
                           style:
                               TextStyle(fontSize: 16.0, color: Colors.black87)),
                       const Padding(padding: EdgeInsets.only(top: 8.0)),
-                      Text(values['mToTR'],
+                      Text(today,
                           style: TextStyle(
                               fontSize: 14.0, color: Colors.grey[600])),
                     ],

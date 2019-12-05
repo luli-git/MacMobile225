@@ -30,6 +30,7 @@ dependencies:
   cloud_firestore: ^0.12.9+5
   image_ink_well: ^0.1.0
   shared_preferences: ^0.4.2
+  intl: ^0.15.8
   flutter_screenutil: ^0.5.0
   get_it: ^1.0.3+2
 
