@@ -31,11 +31,11 @@ class ResourcesTab extends StatelessWidget {
  
                    Container(
                    margin: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                   constraints: BoxConstraints(maxWidth: ScreenUtil().setWidth(740), maxHeight: 100),
+                  //  constraints: BoxConstraints(maxWidth: ScreenUtil().setWidth(740), maxHeight: 100),
                    child: Ink.image(
                      image: AssetImage('assets/images/security.png'),
-                     //height: 200.0,
-                     // width: 300.0,
+                      height: ScreenUtil().setWidth(210),
+                      width: ScreenUtil().setWidth(730),
                      fit: BoxFit.fill,
                      child: //Text("xixiix", style: TextStyle(fontSize: 30), textAlign: TextAlign.center,)
                        InkWell(
@@ -54,8 +54,10 @@ class ResourcesTab extends StatelessWidget {
  
                    Container(
                    margin: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 15.0),
-                   constraints: BoxConstraints(maxWidth: ScreenUtil().setWidth(740), maxHeight: 100),
+                  //  constraints: BoxConstraints(maxWidth: ScreenUtil().setWidth(740), maxHeight: 100),
                    child: Ink.image(
+                      height: ScreenUtil().setWidth(210),
+                      width: ScreenUtil().setWidth(730),
                    image: AssetImage('assets/images/map.png'),
                    fit: BoxFit.fill,
                    child: InkWell(onTap: _launchURLmap,),),),
@@ -414,6 +416,24 @@ class ResourcesTab extends StatelessWidget {
  
    _launchURLresidence() async {
    const url = 'https://www.macalester.edu/residential-life/';
+   if (await canLaunch(url)) {
+     await launch(url);
+   } else {
+     throw 'Could not launch $url';
+   }
+ }
+
+  _launchURLhandshake() async {
+   const url = 'https://macalester.joinhandshake.com';
+   if (await canLaunch(url)) {
+     await launch(url);
+   } else {
+     throw 'Could not launch $url';
+   }
+ }
+
+    _launchURLappointment() async {
+   const url = 'https://macalester.joinhandshake.com/appointments';
    if (await canLaunch(url)) {
      await launch(url);
    } else {
