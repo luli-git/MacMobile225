@@ -21,7 +21,7 @@ dependencies:
   flutter_multiselect: 0.0.1
   googleapis: any
   googleapis_auth: any
-  url_launcher:
+  url_launcher: ^5.0.3
   flutter:
     sdk: flutter
   firebase_core: ^0.4.0+9
@@ -31,6 +31,10 @@ dependencies:
   image_ink_well: ^0.1.0
   shared_preferences: ^0.4.2
   intl: ^0.15.8
+  flutter_screenutil: ^0.5.0
+  get_it: ^1.0.3+2
+
+
 
 
     
@@ -42,6 +46,7 @@ dependencies:
   cupertino_icons: ^0.1.2
 
 dev_dependencies:
+  date_utils: ^0.1.0
   flutter_test:
     sdk: flutter
 
@@ -65,6 +70,13 @@ flutter:
     - assets/images/map.png
     - assets/images/security.png
     - assets/images/organizations.gif
+    - assets/images/residence.jpg
+    - assets/images/1600.gif
+    - assets/images/moodle.gif
+    - assets/images/class2.jpg
+    - assets/images/calendar.gif
+    - assets/images/handshake.jpg
+    - assets/images/appointment.jpg
 
 
 
