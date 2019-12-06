@@ -100,16 +100,27 @@ class _ListPageState extends State<ListPage> {
       ],
     );
   }
+  Color _getStatusColor(Map values){
+    String status = getStatus(values);
+    if (status == "OPEN") {
+      return Colors.green;
+    }
+    else{
+      return Colors.red;
+    }
+  }
 
-  Widget _listTile(Map values) {
-    DateFormat dateFormat = new DateFormat.Hm();
+  String getStatus(Map values){
+        DateFormat dateFormat = new DateFormat.Hm();
     DateTime date = DateTime.now();
-    // print("===================");
-    // print("weekday is ${date.weekday}");
-    String today;
-    String ex = "07:30-09:40 | 11:00-13:30 | 17:00-20:00";
+    String today = date.weekday.toString();
+    print("===================");
+    print("weekday is ${date.weekday}");
+
+    String ex = values[today];
+    print(ex);
     List<String> parts = ex.split("|");
-    String status;
+    String status = 'CLOSED';
 
     for (String time in parts) {
       String period = time.trim();
@@ -117,13 +128,19 @@ class _ListPageState extends State<ListPage> {
       DateTime open = dateFormat.parse(period.split("-")[0]);
       DateTime close = dateFormat.parse(period.split("-")[1]);
       open = new DateTime(now.year, now.month, now.day, open.hour, open.minute);
-      close =
-          new DateTime(now.year, now.month, now.day, close.hour, close.minute);
+      close = new DateTime(now.year, now.month, now.day, close.hour, close.minute);
 
       if (now.isAfter(open) && now.isBefore(close)) {
-        status = "open";
+        status = "OPEN";
       }
     }
+    print(status);
+    return status;
+  }
+
+  Widget _listTile(Map values) {
+    DateTime date = DateTime.now();
+    String today = date.weekday.toString();
 
     return InkWell(
       onTap: () => _launchURL(values['link']),
@@ -155,7 +172,7 @@ class _ListPageState extends State<ListPage> {
                     children: <Widget>[
                       Text(values['name'],
                           style: TextStyle(
-                              fontSize: 18.0,
+                              fontSize: 19.0,
                               fontFamily: 'Lora',
                               color: Colors.black87)),
                       const Padding(padding: EdgeInsets.only(top: 8.0)),
@@ -163,7 +180,13 @@ class _ListPageState extends State<ListPage> {
                       //     style:
                       //         TextStyle(fontSize: 16.0, color: Colors.black87)),
                       // const Padding(padding: EdgeInsets.only(top: 8.0)),
-                      Text("07:30-09:30 | 11:00-13:30 | 17:00-20:00",
+                      Text(getStatus(values),
+                        style: TextStyle(fontSize: 15.0, color: _getStatusColor(values),
+                        )
+                        ),
+                      const Padding(padding: EdgeInsets.only(top: 8.0)),
+
+                      Text(values[today],
                           style: TextStyle(
                               fontSize: 14.0, color: Colors.grey[600])),
                     ],
