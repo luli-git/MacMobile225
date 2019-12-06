@@ -30,7 +30,6 @@ class MonthView extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(8.0),
             decoration: BoxDecoration(
-              border: new Border.all(color: Colors.black, width: 0.3, style: BorderStyle.solid),
               color: hasEvent
                   ? Colors.white
                   : Colors.black12,
@@ -98,7 +97,7 @@ class MonthView extends StatelessWidget {
         padding: const EdgeInsets.only(top: 4.0),
         child: weekdayRow(),
       ),
-      Divider(color: Colors.grey, height: 8.0,),
+      //Divider(color: Colors.grey, height: 8.0,),
     ];
 
     while (weekStart <= lastDayOfMonth) {
