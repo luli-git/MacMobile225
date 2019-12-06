@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:googleapis/calendar/v3.dart' as prefix0;
 import 'package:mac_mobile_attempt/pages/calendar_tile.dart';
 import 'package:mac_mobile_attempt/pages/eventAPI.dart';
+import 'package:mac_mobile_attempt/pages/eventTabPage.dart';
 import 'package:mac_mobile_attempt/pages/events.dart';
-import 'package:mac_mobile_attempt/pages/flutter_clean_calendar.dart';
+//import 'package:mac_mobile_attempt/pages/flutter_clean_calendar.dart';
 import 'package:mac_mobile_attempt/pages/home.dart';
 import 'pages/resources.dart';
 import 'pages/dining.dart';
@@ -79,7 +80,7 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
           HomeTab(),
           DiningTab(),
           HoursTab(),
-          EventTab(),
+          EventsPage(),
           ResourcesTab()
         ],
         // set the controller
