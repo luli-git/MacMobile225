@@ -25,7 +25,7 @@ final _credentials = new ServiceAccountCredentials.fromJson(r'''
 const _SCOPES = [CalendarApi.CalendarScope];
 
 class EventApi {
-  static List<EventCreate> _allEvents = [];
+  static List<Event> _allEvents = [];
 
   static void initEvents() {
     // listOfEvents.add(new EventCreate(eventName: "event 1", eventStartTime: "7:00", eventEndTime: "8:00", eventLocation: "Olin Rice", eventDate: "November 12"));
@@ -37,20 +37,16 @@ class EventApi {
           .list('22b3ifdsq64j7c3uvk17523lq8gts1ja@import.calendar.google.com')
           .then((events) {
         for (Event event in events.items) {
-          // print(event.start.toJson());
-          _allEvents.add(new EventCreate(
-            eventName: event.summary,
-            eventStartDate: event.start,
-            eventEndDate: event.end,
-            eventLocation: event.location,
-            category: "NA",
-          ));
+          if (event.start.dateTime != null || event.start.date != null) {
+            _allEvents.add(event);
+          }
         }
-      });
-    });
-  }
 
-  static List<EventCreate> getAllEvents() {
+    });
+      });
+        }
+
+  static List<Event> getAllEvents() {
     //_allEvents.sort();
          //print(_allEvents[3].eventName.toString());
 
