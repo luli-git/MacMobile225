@@ -46,8 +46,8 @@ class EventsView extends StatelessWidget {
 //    ),
 //  );
 
-  String getLocations(Map<String, String> event) {
-    if (event['location'] != null) {
+  String getLocations(Map <String,String> event){
+    if (event['location'] != null){
       return event['location'];
     } else {
       return "Macalester College";
@@ -62,18 +62,16 @@ class EventsView extends StatelessWidget {
     }
   }
 
-  String getDescription(Map<String, String> event) {
-    if (event['description'] != null) {
-      return event['description'];
-    } else {
-      return "Untitled Event";
+String getEventTime(Map <String,String> event){
+    if (DateFormat.jm().format(DateTime.parse(event['date'])) == "12:00 AM"){
+      return "All Day";
+    } else{
+      return DateFormat.jm().format(DateTime.parse(event['date']));
     }
-  }
-
+}
+  
   String formatTime(event) {
-    // print(event[dateField]);
-    final date = DateTime.parse(event[dateField]).toLocal();
-    return DateFormat.jm().format(date);
+    return DateFormat.jm().format(DateTime.parse(event['date']));
   }
 
   String getMonthName(int month) {
@@ -101,6 +99,13 @@ class EventsView extends StatelessWidget {
       return "November";
     } else {
       return "December";
+    }
+  }
+  String getAMPM(int hour){
+    if (hour <=12){
+      return "AM";
+    } else {
+      return "PM";
     }
   }
 
@@ -166,7 +171,6 @@ class EventsView extends StatelessWidget {
             Padding(
               padding: EdgeInsets.all(7),
             ),
-
             Container(
               padding: const EdgeInsets.only(bottom: 8),
               child: Text(
@@ -196,6 +200,10 @@ class EventsView extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
+                Text(
+                  getEventTime(event),
+                  style: TextStyle(fontSize: 14, color: prefix0.Colors.black54),
+                )
               ],
             ),
             const Padding(padding: EdgeInsets.only(top: 15.0)),
@@ -222,7 +230,7 @@ class EventsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        color: theme.canvasColor,
+        color: prefix0.Colors.white,
         child: ListView(
           children: eventList(),
         ),

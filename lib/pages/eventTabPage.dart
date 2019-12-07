@@ -103,17 +103,47 @@ class EventPageStateful extends State<EventsPage> {
 
   static String getHour(Event event) {
     if (event.start.dateTime != null) {
-      if (event.start.dateTime.hour > 9) {
-        return event.start.dateTime.hour.toString();
-      } else {
+      if (event.start.dateTime.hour == 0){
         return "0" + event.start.dateTime.hour.toString();
+      } else if (event.start.dateTime.hour == 1){
+        return "19";
+      } else if (event.start.dateTime.hour == 2){
+        return "20";
+      } else if (event.start.dateTime.hour == 3) {
+        return "21";
+      } else if (event.start.dateTime.hour == 4) {
+        return "22";
+      } else if (event.start.dateTime.hour == 5) {
+        return "23";
+      }
+      else if (event.start.dateTime.hour > 15) {
+        int hour = event.start.dateTime.hour -6;
+        return hour.toString();
+      } else {
+        int hour2 = event.start.dateTime.hour -6;
+        return "0" + hour2.toString();
       }
     }
     else {
-      if (event.start.date.hour > 9) {
-        return event.start.date.hour.toString();
-      } else {
+      if (event.start.date.hour == 0){
         return "0" + event.start.date.hour.toString();
+      } else if (event.start.date.hour == 1){
+        return "19";
+      } else if (event.start.date.hour == 2){
+        return "20";
+      } else if (event.start.date.hour == 3) {
+        return "21";
+      } else if (event.start.date.hour == 4) {
+        return "22";
+      } else if (event.start.date.hour == 5) {
+        return "23";
+      }
+      else if (event.start.date.hour > 15) {
+        int hour3 = event.start.date.hour - 6;
+        return hour3.toString();
+      } else {
+        int hour4 = event.start.date.hour - 6;
+        return "0" + hour4.toString();
       }
     }
   }
@@ -181,6 +211,8 @@ class EventPageStateful extends State<EventsPage> {
     return listOfEvents;
 
   }
+
+
 
 
 
