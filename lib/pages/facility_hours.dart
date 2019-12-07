@@ -17,7 +17,8 @@ class HoursTab extends StatelessWidget {
             backgroundColor: Color(0xFF501426A).withOpacity(0.9),
             flexibleSpace: FlexibleSpaceBar(
                 centerTitle: false,
-                title: Text("Facility Hours",
+                title: 
+                Text("Facility Hours",
                     style: TextStyle(
                         color: Colors.blue[50],
                         fontSize: 20.0,
@@ -181,6 +182,9 @@ class _ListPageState extends State<ListPage> {
       }
       if (date.weekday == 5) {
         today = values['friday'];
+      }
+      if (date.weekday == 6) {
+        today = values['saturday'];
       }
     } else {
       if (1 <= date.weekday && date.weekday <= 4) {

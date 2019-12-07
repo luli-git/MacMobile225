@@ -111,18 +111,19 @@ class _ListPageState extends State<ListPage> {
   }
 
   String getStatus(Map values){
-        DateFormat dateFormat = new DateFormat.Hm();
+    DateFormat dateFormat = new DateFormat.Hm();
     DateTime date = DateTime.now();
     String today = date.weekday.toString();
 
     String ex = values[today];
     List<String> parts = ex.split("|");
     String status = 'CLOSED';
-
-    for (String time in parts) {
+    if(ex!=" "){
+      for (String time in parts) {
       String period = time.trim();
       final now = DateTime.now();
       DateTime open = dateFormat.parse(period.split("-")[0]);
+      print(open);
       DateTime close = dateFormat.parse(period.split("-")[1]);
       open = new DateTime(now.year, now.month, now.day, open.hour, open.minute);
       close = new DateTime(now.year, now.month, now.day, close.hour, close.minute);
@@ -131,8 +132,11 @@ class _ListPageState extends State<ListPage> {
         status = "OPEN";
       }
     }
+    }
+ 
     return status;
   }
+  
 
   Widget _listTile(Map values) {
     DateTime date = DateTime.now();
@@ -172,10 +176,7 @@ class _ListPageState extends State<ListPage> {
                               fontFamily: 'Lora',
                               color: Colors.black87)),
                       const Padding(padding: EdgeInsets.only(top: 8.0)),
-                      // Text(values['phone'],
-                      //     style:
-                      //         TextStyle(fontSize: 16.0, color: Colors.black87)),
-                      // const Padding(padding: EdgeInsets.only(top: 8.0)),
+                      
                       Text(getStatus(values),
                         style: TextStyle(fontSize: 15.0, color: _getStatusColor(values),
                         )
