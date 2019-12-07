@@ -52,7 +52,7 @@ class HomeTabStateful extends State<HomeTab> {
         body: SingleChildScrollView(
             child: Column(children: <Widget>[
           Image(
-              image: AssetImage("assets/images/HPnew.jpg"),
+              image: AssetImage("assets/images/snow.jpg"),
               fit: BoxFit.cover,
               height: 240,
               width: MediaQuery.of(context).size.width),

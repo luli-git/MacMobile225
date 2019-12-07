@@ -114,11 +114,8 @@ class _ListPageState extends State<ListPage> {
         DateFormat dateFormat = new DateFormat.Hm();
     DateTime date = DateTime.now();
     String today = date.weekday.toString();
-    print("===================");
-    print("weekday is ${date.weekday}");
 
     String ex = values[today];
-    print(ex);
     List<String> parts = ex.split("|");
     String status = 'CLOSED';
 
@@ -134,7 +131,6 @@ class _ListPageState extends State<ListPage> {
         status = "OPEN";
       }
     }
-    print(status);
     return status;
   }
 

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HoursTab extends StatelessWidget {
-
   @override
-
-  
   Widget build(BuildContext context) {
     return new Scaffold(
         body: NestedScrollView(
@@ -17,7 +15,6 @@ class HoursTab extends StatelessWidget {
             pinned: true,
             snap: false,
             backgroundColor: Color(0xFF501426A).withOpacity(0.9),
-            
             flexibleSpace: FlexibleSpaceBar(
                 centerTitle: false,
                 title: Text("Facility Hours",
@@ -45,6 +42,14 @@ class ListPage extends StatefulWidget {
 Future _data;
 
 class _ListPageState extends State<ListPage> {
+  static _launchURL(String link) async {
+    if (await canLaunch(link)) {
+      await launch(link);
+    } else {
+      throw 'Could not launch $link';
+    }
+  }
+
   Future getPosts() async {
     var firestore = Firestore.instance;
     QuerySnapshot qn = await firestore.collection('facilities').getDocuments();
@@ -109,78 +114,90 @@ class _ListPageState extends State<ListPage> {
   }
 
   Widget _expansionTile(Map values) {
-    
     return ExpansionTile(
       initiallyExpanded: false,
       title: Column(
         children: <Widget>[_listTile(values)],
       ),
       children: <Widget>[
-        Padding(padding: const EdgeInsets.only(
+        Padding(
+          padding: const EdgeInsets.only(
               left: 25.0, top: 5.0, bottom: 5.0, right: 0.0),
-        child: 
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    child: Text(
-                      "Website: " + values['link'],
-                      softWrap: true,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    InkWell(
+                        onTap: () => _launchURL("https://" + values['link']),
+                        child: Text.rich(
+                          TextSpan(
+                            text: 'Website: ',
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: values['link'],
+                                  style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: Colors.blue,
+                                  )),
+                              // can add more TextSpans here...
+                            ],
+                          ),
+                        )
+                        // height: 30.0,
+                        ),
+                    const Padding(padding: EdgeInsets.only(top: 5.0)),
+                    Container(
+                      child: Text("Phone: " + values['phone'],
+                          style: TextStyle(color: Colors.black87)),
                     ),
-                    height: 30.0,
-                  ),
-                  const Padding(padding: EdgeInsets.only(top: 5.0)),
-                  
-                  Container(
-                    child: Text("Location: " + values['location']),
-                    height: 30.0,
-                  )
-                ],
-              ),
-            )
-          ],
-        ),)
-      ], 
+                    const Padding(padding: EdgeInsets.only(top: 5.0)),
+                    Container(
+                      child: Text("Location: " + values['location']),
+                      height: 30.0,
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        )
+      ],
     );
   }
 
   Widget _listTile(Map values) {
     DateTime date = DateTime.now();
-    print("===================");
-    print("weekday is ${date.weekday}");
     String today;
-    if(values['name'] == 'Pool'){
-      if(date.weekday == 1 || date.weekday == 3 ){
+
+    if (values['name'] == 'Pool') {
+      if (date.weekday == 1 || date.weekday == 3) {
         today = values['mw'];
       }
-      if(date.weekday == 2 || date.weekday == 4 ){
+      if (date.weekday == 2 || date.weekday == 4) {
         today = values['ttr'];
       }
-      if(date.weekday == 5){
+      if (date.weekday == 5) {
         today = values['friday'];
       }
-      
-    }
-    else{
-      if(1 <= date.weekday && date.weekday <= 4 ){
+    } else {
+      if (1 <= date.weekday && date.weekday <= 4) {
         today = values['mToTR'];
       }
-      if(date.weekday == 5){
+      if (date.weekday == 5) {
         today = values['friday'];
       }
-      if(date.weekday == 6){
+      if (date.weekday == 6) {
         today = values['saturday'];
       }
-      if(date.weekday == 7){
+      if (date.weekday == 7) {
         today = values['sunday'];
       }
     }
+
     return InkWell(
-      
       // onTap: all[index].urlTap,
       child: SafeArea(
         top: false,
@@ -210,13 +227,9 @@ class _ListPageState extends State<ListPage> {
                     children: <Widget>[
                       Text(values['name'],
                           style: TextStyle(
-                              fontSize: 18.0,
+                              fontSize: 17.0,
                               fontFamily: 'Lora',
                               color: Colors.black87)),
-                      const Padding(padding: EdgeInsets.only(top: 8.0)),
-                      Text(values['phone'],
-                          style:
-                              TextStyle(fontSize: 16.0, color: Colors.black87)),
                       const Padding(padding: EdgeInsets.only(top: 8.0)),
                       Text(today,
                           style: TextStyle(

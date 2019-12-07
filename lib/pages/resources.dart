@@ -37,7 +37,7 @@ class ResourcesTab extends StatelessWidget {
                       height: ScreenUtil().setWidth(210),
                       width: ScreenUtil().setWidth(730),
                      fit: BoxFit.fill,
-                     child: //Text("xixiix", style: TextStyle(fontSize: 30), textAlign: TextAlign.center,)
+                     child: 
                        InkWell(
                          onTap: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context)  {

@@ -201,24 +201,24 @@ class _CalendarState extends State<CalendarView> {
     );
   }
 
-  Widget _separator() {
-    return Row(
-      children: <Widget>[
-        Expanded(
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 4.0),
-            color: Color(0xFF01426A),
-            child: Text(
-              widget.separatorTitle,
-              style: TextStyle(color: Colors.white,fontSize: 20),
-              //style: _theme.accentTextTheme.display1,
-              textAlign: TextAlign.center,
-            ),
-          ),
-        )
-      ],
-    );
-  }
+  // Widget _separator() {
+  //   return Row(
+  //     children: <Widget>[
+  //       Expanded(
+  //         child: Container(
+  //           padding: EdgeInsets.symmetric(vertical: 4.0),
+  //           color: Color(0xFF01426A),
+  //           child: Text(
+  //             widget.separatorTitle,
+  //             style: TextStyle(color: Colors.white,fontSize: 20),
+  //             //style: _theme.accentTextTheme.display1,
+  //             textAlign: TextAlign.center,
+  //           ),
+  //         ),
+  //       )
+  //     ],
+  //   );
+  // }
 
   _daySelectHandler(int day) {
     if (_currentDay == day) {
@@ -250,7 +250,7 @@ class _CalendarState extends State<CalendarView> {
               onTapHandler: _daySelectHandler,
               theme: _theme,
             ),
-            _separator(),
+            // _separator(),
             EventsView(
               events: _monthlyEvents(),
               month: _currentMonth,

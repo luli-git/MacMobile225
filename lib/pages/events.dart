@@ -1,63 +1,63 @@
-//import 'package:flutter/material.dart';
-//import 'package:flutter/material.dart' as prefix0;
-//import 'package:googleapis/calendar/v3.dart';
-//import 'package:googleapis/calendar/v3.dart' as prefix1;
-//import 'package:googleapis_auth/auth_io.dart';
-//import 'package:flutter_multiselect/flutter_multiselect.dart';
-//import 'multiSelectChip.dart';
-//import 'eventAPI.dart';
-//
-////
-//
-//
-//
-//const _SCOPES = [CalendarApi.CalendarScope];
-//
-//
-//
-//
-//
-//
-//
-//class EventCreate {
+// import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart' as prefix0;
+// import 'package:googleapis/calendar/v3.dart';
+// import 'package:googleapis/calendar/v3.dart' as prefix1;
+// import 'package:googleapis_auth/auth_io.dart';
+// import 'package:flutter_multiselect/flutter_multiselect.dart';
+// import 'multiSelectChip.dart';
+// import 'eventAPI.dart';
+
+// //
+
+
+
+// const _SCOPES = [CalendarApi.CalendarScope];
+
+
+
+
+
+
+
+// class EventCreate {
 //  final String eventName;
 //  final EventDateTime eventStartDate;
 //  final EventDateTime eventEndDate;
 //  final String eventLocation;
 //  final String category;
-//
+
 //  EventCreate({this.eventName, this.eventStartDate, this.eventEndDate, this.eventLocation, this.category});
-//
-//}
-//
-//
-//
-//
-//
-////
-////List<Event>
-////
-//
-//
-//class EventTab extends StatefulWidget{
+
+// }
+
+
+
+
+
+// //
+// //List<Event>
+// //
+
+
+// class EventTab extends StatefulWidget{
 //  @override
 //  State<StatefulWidget> createState() {
 //    //print(EventCreate.allEvents().length);
 //    return EventTabStateful();
 //  }
-//}
-//
-//
-//
-//
-//
-//
-//
-//class EventTabStateful extends State<EventTab> {
-//
+// }
+
+
+
+
+
+
+
+// class EventTabStateful extends State<EventTab> {
+
 //  //final List<EventCreate> _allEvents = EventCreate.allEvents();
-//
-//
+
+
 //  static String getLocation(int index){
 //    if (EventApi.getAllEvents()[index].eventLocation != null){
 //      return EventApi.getAllEvents()[index].eventLocation ;
@@ -65,7 +65,7 @@
 //      return "Macalester College";
 //    }
 //  }
-//
+
 //  static String getStartTime(int index){
 //    if (//EventApi.getAllEvents()[index].eventStartDate.date != null &&
 //    EventApi.getAllEvents()[index].eventStartDate.dateTime != null &&
@@ -75,7 +75,7 @@
 //      return "All Day";
 //    }
 //  }
-//
+
 //  static String getStartTimeMinute(int index){
 //    if (//EventApi.getAllEvents()[index].eventStartDate.date != null &&
 //    EventApi.getAllEvents()[index].eventStartDate.dateTime != null &&
@@ -91,7 +91,7 @@
 //      return "";
 //    }
 //  }
-//
+
 //  static String getEndTime(int index){
 //    if (//EventApi.getAllEvents()[index].eventEndDate.date != null &&
 //    EventApi.getAllEvents()[index].eventEndDate.dateTime != null &&
@@ -101,7 +101,7 @@
 //      return "";
 //    }
 //  }
-//
+
 //  static String getEndTimeMinute(int index){
 //    if (//EventApi.getAllEvents()[index].eventEndDate.date != null &&
 //    EventApi.getAllEvents()[index].eventEndDate.dateTime != null &&
@@ -117,7 +117,7 @@
 //      return "";
 //    }
 //  }
-//
+
 //  static String getMonth(int index){
 //    if (EventApi.getAllEvents()[index].eventStartDate.date.month != null) {
 //      return EventApi.getAllEvents()[index].eventStartDate.date.month
@@ -126,7 +126,7 @@
 //      return "";
 //    }
 //    }
-//
+
 //  static String getDay(int index){
 //    if (EventApi.getAllEvents()[index].eventStartDate.date.day != null) {
 //      return EventApi.getAllEvents()[index].eventStartDate.date.day
@@ -135,7 +135,7 @@
 //      return "";
 //    }
 //  }
-//
+
 //  static String getYear(int index){
 //    if (EventApi.getAllEvents()[index].eventStartDate.date.year != null) {
 //      return EventApi.getAllEvents()[index].eventStartDate.date.year
@@ -144,11 +144,11 @@
 //      return "";
 //    }
 //  }
-//
-//
-//
-//
-//
+
+
+
+
+
 //  List<String> reportList = [
 //    "Academic",
 //    "Alumni",
@@ -161,20 +161,20 @@
 //    "Religious",
 //    "Student Org",
 //  ];
-//
-//
-//
-//
-//
-//
-//
+
+
+
+
+
+
+
 //  _showReportDialog() {
 //    showDialog(
 //        context: context,
 //        builder: (BuildContext context) {
 //          //Here we will build the content of the dialog
 //          return AlertDialog(
-//
+
 //            title: Text("Categories"),
 //            content: MultiSelectChip(
 //              reportList,
@@ -193,9 +193,9 @@
 //          );
 //        });
 //  }
-//
+
 //  DateTime selectedDate = DateTime.now();
-//
+
 //  Future<Null> _selectDate(BuildContext context) async {
 //    final DateTime picked = await showDatePicker(
 //        context: context,
@@ -207,14 +207,14 @@
 //        selectedDate = picked;
 //      });
 //  }
-//
-//
+
+
 //  //final List<Event> _allEvents = Event.allEvents();
 //  //EventTab(){}
 //  @override
 //  Widget build(BuildContext context) {
 //    return LayoutBuilder(
-//
+
 //      builder: (BuildContext context, BoxConstraints viewportConstraints) {
 //        return SingleChildScrollView(
 //          child: Column(
@@ -251,22 +251,22 @@
 //        );
 //      },);
 //  }
-//
-//
-//
+
+
+
 //  getHomePageBody(BuildContext context) {
 //    print(EventApi.getAllEvents().length);
-//
-//
+
+
 //    return ListView.builder(
 //      shrinkWrap: true,
 //      itemCount: 250,
 //      itemBuilder: _getItemUI,
-//
+
 //      //padding: EdgeInsets.all(0.0),
 //    );
 //  }
-//
+
 //  Widget _getItemUI(BuildContext context, int index) {
 //    return new Container(
 //        width: 400.0,
@@ -301,14 +301,14 @@
 //                    getStartTime(index) + getStartTimeMinute(index)  + getEndTime(index) + getEndTimeMinute(index) + "             " + getMonth(index) + "/" + getDay(index) + "/" + getYear(index),
 //                    style: TextStyle(color: prefix0.Colors.white, fontSize: 18),
 //                    textAlign: TextAlign.left,
-//
+
 //                  ),
 //                ),
 //              ),
 //              Padding(
 //                padding: EdgeInsets.all(7),
 //              ),
-//
+
 //              Container(
 //                padding: const EdgeInsets.only(bottom: 8),
 //                child: Text(
@@ -324,16 +324,16 @@
 //              ),
 //              Icon(Icons.place),
 //              Text(getLocation(index),
-//
+
 //                //"Location",
 //                style: TextStyle(
 //                  color: prefix0.Colors.grey[500],
 //                  fontSize: 13,
-//
+
 //                ),
 //                textAlign: TextAlign.center,
 //              ),
 //            ]));
-//
+
 //  }
-//}
+// }
