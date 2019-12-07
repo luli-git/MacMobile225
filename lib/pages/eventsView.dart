@@ -48,7 +48,7 @@ class EventsView extends StatelessWidget {
 //    ),
 //  );
 
-  String getLocations(Map<String,String> event){
+  String getLocations(Map <String,String> event){
     if (event['location'] != null){
       return event['location'];
     } else {
@@ -63,10 +63,17 @@ class EventsView extends StatelessWidget {
       return "Untitled Event";
     }
   }
+
+String getEventTime(Map <String,String> event){
+    if (DateFormat.jm().format(DateTime.parse(event['date'])) == "12:00 AM"){
+      return "All Day";
+    } else{
+      return DateFormat.jm().format(DateTime.parse(event['date']));
+    }
+}
   
   String formatTime(event) {
-    final date = DateTime.parse(event[dateField]).toLocal();
-    return DateFormat.jm().format(date);
+    return DateFormat.jm().format(DateTime.parse(event['date']));
   }
   
   String getMonthName(int month) {
@@ -97,6 +104,16 @@ class EventsView extends StatelessWidget {
     }
   }
 
+  String getAMPM(int hour){
+    if (hour <=12){
+      return "AM";
+    } else {
+      return "PM";
+    }
+  }
+
+
+
 
   Widget eventRow(int day, Map<String, String> event) => InkWell(
     child: Padding(
@@ -121,7 +138,7 @@ class EventsView extends StatelessWidget {
                   style: TextStyle(fontSize: 14, color: prefix0.Colors.black54),
                 ),
                 Text(
-                  formatTime(event),
+                  getEventTime(event),
                   style: TextStyle(fontSize: 14, color: prefix0.Colors.black54),
                 )
               ],
@@ -155,7 +172,7 @@ class EventsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        color: theme.canvasColor,
+        color: prefix0.Colors.white,
         child: ListView(
           children: eventList(),
         ),

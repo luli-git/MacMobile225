@@ -37,7 +37,7 @@ class EventApi {
           .list('22b3ifdsq64j7c3uvk17523lq8gts1ja@import.calendar.google.com')
           .then((events) {
         for (Event event in events.items) {
-          if (event.start.dateTime != null || event.start.date != null) {
+          if ((event.start.dateTime != null || event.start.date != null) && event.summary.contains("Library Hours") == false){
             _allEvents.add(event);
           }
         }
