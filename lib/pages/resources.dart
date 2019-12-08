@@ -33,7 +33,7 @@ class ResourcesTab extends StatelessWidget {
                    margin: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                   //  constraints: BoxConstraints(maxWidth: ScreenUtil().setWidth(740), maxHeight: 100),
                    child: Ink.image(
-                     image: AssetImage('assets/images/security.png'),
+                     image: AssetImage('assets/images/security2.png'),
                       height: ScreenUtil().setWidth(210),
                       width: ScreenUtil().setWidth(730),
                      fit: BoxFit.fill,
