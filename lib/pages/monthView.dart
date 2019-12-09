@@ -38,6 +38,16 @@ class MonthView extends StatelessWidget {
     );
   }
 
+  static bool isToday(int day, int currentDay){
+    if (day == currentDay){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+
   Widget dayMarker(int day, bool hasEvent, int numEvent) => (
       Expanded(
         child: GestureDetector(
@@ -48,7 +58,7 @@ class MonthView extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             decoration: BoxDecoration(
               color: isSelected
-                  ? Colors.grey
+                  ? Colors.black12
                   : Colors.white,
               shape: BoxShape.circle,
             ),
@@ -142,6 +152,8 @@ class MonthView extends StatelessWidget {
         ),
       )
   ));
+
+
 
 
   Widget weekRow(int startDay, int lastDay) {

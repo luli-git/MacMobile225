@@ -65,7 +65,7 @@ class _CalendarState extends State<CalendarView> {
     _currentYear = DateTime.now().year;
     _selectedColor = Colors.orange;
     _isSelected = false;
-    _currentDay = 0;
+    _currentDay = DateTime.now().day;
     _theme = widget.theme ?? ThemeData.light();
   }
 
