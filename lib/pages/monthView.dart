@@ -47,8 +47,8 @@ class MonthView extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(8.0),
             decoration: BoxDecoration(
-              color: hasEvent
-                  ? Colors.white
+              color: isSelected
+                  ? Colors.grey
                   : Colors.white,
               shape: BoxShape.circle,
             ),
@@ -76,7 +76,7 @@ class MonthView extends StatelessWidget {
                   )
                   ),
                 ],
-            ): (hasEvent == true && numEvent == 1 )
+            ): (hasEvent == true && numEvent == 2 )
                   ?  Row (
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -149,7 +149,7 @@ class MonthView extends StatelessWidget {
     for (var i = startDay; i < startDay + DateTime.daysPerWeek; i++) {
       if (i > 0 && i <= lastDay) {
         final hasEvent = events[i] != null;
-        final numEvent = 3;
+        final numEvent = 1;
         days.add(dayMarker(i, hasEvent, numEvent));
       } else {
         days.add(Expanded(child: Container(),));
