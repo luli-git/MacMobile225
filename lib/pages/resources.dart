@@ -206,7 +206,7 @@ class ResourcesTab extends StatelessWidget {
                    child:
                   
                      RoundedRectangleImageInkWell(
-                     onPressed: _launchURLclass,
+                     onPressed: _launchURLmaxcenter,
                      width: ScreenUtil().setWidth(345),
                      height: 80,
                      borderRadius: BorderRadius.only(
@@ -231,7 +231,7 @@ class ResourcesTab extends StatelessWidget {
                    child:
                   
                      RoundedRectangleImageInkWell(
-                     onPressed: _launchURLacademic,
+                     onPressed: _launchURLlibrary,
                      width: ScreenUtil().setWidth(345),
                      height: 80,
                      borderRadius: BorderRadius.only(
@@ -489,6 +489,24 @@ class ResourcesTab extends StatelessWidget {
 
     _launchURLappointment() async {
    const url = 'https://macalester.joinhandshake.com/appointments';
+   if (await canLaunch(url)) {
+     await launch(url);
+   } else {
+     throw 'Could not launch $url';
+   }
+ }
+
+ _launchURLmaxcenter() async {
+   const url = 'https://www.macalester.edu/max/#/0';
+   if (await canLaunch(url)) {
+     await launch(url);
+   } else {
+     throw 'Could not launch $url';
+   }
+ }
+
+  _launchURLlibrary() async {
+   const url = 'https://www.macalester.edu/library/';
    if (await canLaunch(url)) {
      await launch(url);
    } else {
