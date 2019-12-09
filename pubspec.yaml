@@ -84,6 +84,8 @@ flutter:
     - assets/images/moodle.gif
     - assets/images/class2.jpg
     - assets/images/calendar.gif
+    - assets/images/maxcenter.gif    
+    - assets/images/library.gif    
     - assets/images/handshake.jpg
     - assets/images/appointment.jpg
 

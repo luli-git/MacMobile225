@@ -87,7 +87,7 @@ class ResourcesTab extends StatelessWidget {
                   
                    Container(
  
-                   margin: const EdgeInsets.fromLTRB(20.0, 15.0, 10.0, 15.0),
+                   margin: const EdgeInsets.fromLTRB(20.0, 15.0, 10.0, 10.0),
                    constraints: BoxConstraints(maxWidth: 200, maxHeight: 80),
  
                    child:
@@ -113,7 +113,7 @@ class ResourcesTab extends StatelessWidget {
  
                  Container(
  
-                   margin: const EdgeInsets.fromLTRB(10.0, 15.0, 20.0, 15.0),
+                   margin: const EdgeInsets.fromLTRB(10.0, 15.0, 20.0, 10.0),
                    constraints: BoxConstraints(maxWidth: 200, maxHeight: 80),
  
                    child:
@@ -146,7 +146,7 @@ class ResourcesTab extends StatelessWidget {
  
                  Container(
  
-                   margin: const EdgeInsets.fromLTRB(20.0, 15.0, 10.0, 15.0),
+                   margin: const EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 10.0),
  
                    child:
                   
@@ -170,7 +170,7 @@ class ResourcesTab extends StatelessWidget {
  
                  Container(
  
-                   margin: const EdgeInsets.fromLTRB(10.0, 15.0, 20.0, 15.0),
+                   margin: const EdgeInsets.fromLTRB(10.0, 10.0, 20.0, 10.0),
                   
  
                    child:
@@ -186,6 +186,61 @@ class ResourcesTab extends StatelessWidget {
                          bottomRight: const Radius.circular(10),
                          ),
                      image: AssetImage('assets/images/calendar.gif'),
+                    
+                      
+                   ),
+ 
+                 ),
+                
+               ]
+               ),
+
+               Row(
+               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+               children: [
+ 
+                 Container(
+ 
+                   margin: const EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 10.0),
+ 
+                   child:
+                  
+                     RoundedRectangleImageInkWell(
+                     onPressed: _launchURLclass,
+                     width: ScreenUtil().setWidth(345),
+                     height: 80,
+                     borderRadius: BorderRadius.only(
+                         topLeft: const Radius.circular(10),
+                         topRight: const Radius.circular(10),
+                         bottomLeft: const Radius.circular(10),
+                         bottomRight: const Radius.circular(10),
+                         ),
+                     image: AssetImage('assets/images/maxcenter.gif'),
+                    
+                      
+                   ),
+ 
+                 ),
+ 
+ 
+                 Container(
+ 
+                   margin: const EdgeInsets.fromLTRB(10.0, 10.0, 20.0, 10.0),
+                  
+ 
+                   child:
+                  
+                     RoundedRectangleImageInkWell(
+                     onPressed: _launchURLacademic,
+                     width: ScreenUtil().setWidth(345),
+                     height: 80,
+                     borderRadius: BorderRadius.only(
+                         topLeft: const Radius.circular(10),
+                         topRight: const Radius.circular(10),
+                         bottomLeft: const Radius.circular(10),
+                         bottomRight: const Radius.circular(10),
+                         ),
+                     image: AssetImage('assets/images/library.gif'),
                     
                       
                    ),
@@ -219,7 +274,7 @@ class ResourcesTab extends StatelessWidget {
  
                  Container(
  
-                   margin: const EdgeInsets.fromLTRB(20.0, 15.0, 10.0, 15.0),
+                   margin: const EdgeInsets.fromLTRB(20.0, 15.0, 10.0, 10.0),
                   
  
                    child:
@@ -248,7 +303,7 @@ class ResourcesTab extends StatelessWidget {
  
                  Container(
  
-                   margin: const EdgeInsets.fromLTRB(10.0, 15.0, 20.0, 15.0),
+                   margin: const EdgeInsets.fromLTRB(10.0, 15.0, 20.0, 10.0),
                   
  
                    child:
@@ -298,7 +353,7 @@ class ResourcesTab extends StatelessWidget {
  
                  Container(
  
-                   margin: const EdgeInsets.fromLTRB(20.0, 15.0, 10.0, 15.0),
+                   margin: const EdgeInsets.fromLTRB(20.0, 15.0, 10.0, 10.0),
                   
  
                    child:
@@ -327,7 +382,7 @@ class ResourcesTab extends StatelessWidget {
  
                  Container(
  
-                   margin: const EdgeInsets.fromLTRB(10.0, 15.0, 20.0, 15.0),
+                   margin: const EdgeInsets.fromLTRB(10.0, 15.0, 20.0, 10.0),
                   
  
                    child:
