@@ -50,6 +50,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: "^0.7.0"
+  configurable_expansion_tile: "1.0.0"
+
 flutter_icons:
   image_path: "assets/icon/project_icon.png"
   android: true

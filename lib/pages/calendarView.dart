@@ -13,6 +13,8 @@ class CalendarView extends StatefulWidget {
     this.titleField = 'name',
     this.detailField = 'location',
     this.dateField = 'date',
+    this.desField = 'description',
+    this.endTime = 'end',
     this.separatorTitle = 'Events',
     this.theme,
     this.eventStream,
@@ -37,6 +39,8 @@ class CalendarView extends StatefulWidget {
   ///Field to use as the date field for organizing events by month.
   ///Also used to display time information in the event list.
   final String dateField;
+  final String desField;
+  final String endTime;
 
   ///Title used in the separator between the month and list views.
   final String separatorTitle;
@@ -273,6 +277,8 @@ class _CalendarState extends State<CalendarView> {
               currentDay: _currentDay,
               onEventTapped: _onEventTapped,
               titleField: widget.titleField,
+              desField: widget.desField,
+              endTime: widget.endTime,
               detailField: widget.detailField,
               dateField: widget.dateField,
               theme: _theme,

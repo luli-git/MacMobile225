@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
 import 'package:intl/intl.dart';
 import 'package:googleapis/calendar/v3.dart';
+import 'package:mac_mobile_attempt/helpers/custom_expansion_tile.dart'
+    as customm;
+import 'package:configurable_expansion_tile/configurable_expansion_tile.dart';
 
 class EventsView extends StatelessWidget {
   const EventsView(
@@ -11,6 +14,8 @@ class EventsView extends StatelessWidget {
       this.currentDay,
       this.onEventTapped,
       this.titleField,
+      this.desField,
+      this.endTime,
       this.detailField,
       this.dateField,
       this.theme})
@@ -21,33 +26,31 @@ class EventsView extends StatelessWidget {
   final int currentDay;
   final Function onEventTapped;
   final String titleField;
+  final String desField;
+  final String endTime;
   final String detailField;
   final String dateField;
   final ThemeData theme;
 
-//  Widget dateBadge(day) => ConstrainedBox(
-//    constraints: new BoxConstraints(minWidth: 75.0),
-//    child: new Container(
-//      margin: EdgeInsets.all(8.0),
-//      padding: EdgeInsets.all(16.0),
-//      decoration: BoxDecoration(
-//        shape: BoxShape.rectangle,
-//        color: Color(0xFF01426A),
-//      ),
-//      child: Column(
-//        children: <Widget>[
-//          Text(
-//            month.toString() + "/" + day.toString(),
-//            textAlign: TextAlign.center,
-//            style: (TextStyle(color: prefix0.Colors.white)),
-//          ),
-//        ],
-//      ),
-//    ),
-//  );
+  String getDescription(Map<String, String> event) {
+    if (event['description'] != null) {
 
-  String getLocations(Map <String,String> event){
-    if (event['location'] != null){
+      event['description'] = event['description'].replaceAll('&quot;', " ");
+      event['description'] = event['description'].replaceAll('&nbsp;', " "); //.split('Sponsored by')[1];
+      event['description'] = event['description'].split("Sponsored by ")[0]; //.split('Sponsored by')[1];
+      if(event['description'].contains("&")){
+        print(event['name']);
+      }
+        return event[desField];
+      
+    } else {
+      return " ";
+    }
+  }
+
+  String getLocations(Map<String, String> event) {
+    if (event['location'] != null) {
+      // print(event.keys);
       return event[detailField];
     } else {
       return "Macalester College";
@@ -62,16 +65,25 @@ class EventsView extends StatelessWidget {
     }
   }
 
-String getEventTime(Map <String,String> event){
-    if (DateFormat.jm().format(DateTime.parse(event['date'])) == "12:00 AM"){
-      return "All Day";
-    } else{
-      return DateFormat.jm().format(DateTime.parse(event['date']));
-    }
-}
-  
+  // String getEventTime(Map<String, String> event, String start) {
+  //   if (DateFormat.Hm().format(DateTime.parse(event[start])) == "00:00") {
+  //     return "All Day";
+  //   } else {
+  //     print(event['date']);
+  //     return  DateFormat.Hm().format(DateTime.parse(event[start]));
+  //   }
+  // }
+
   String formatTime(event) {
-    return DateFormat.jm().format(DateTime.parse(event['date']));
+    if (DateFormat.Hm().format(DateTime.parse(event['date'])) == "00:00") {
+      return "All Day  ";
+    } else {
+      if(event['name'].contains("Popular")){
+        print(event['date']);
+      }
+      return  DateFormat.Hm().format(DateTime.parse(event['date'])) + "-" + DateFormat.Hm().format(DateTime.parse(event['end']))  + "  ";
+    }
+    // return DateFormat.Hm().format(DateTime.parse(event[start]));
   }
 
   String getMonthName(int month) {
@@ -101,110 +113,130 @@ String getEventTime(Map <String,String> event){
       return "December";
     }
   }
-  String getAMPM(int hour){
-    if (hour <=12){
-      return "AM";
-    } else {
-      return "PM";
-    }
+
+  Widget eventRow(int day, Map<String, String> event) {
+    return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+          color: Color(0XFF01426A),
+          border: Border.all(
+            color: prefix0.Colors.white,
+          ),
+        ),
+        child: Column(
+          children: <Widget>[
+            Card(
+                elevation: 6,
+                clipBehavior: Clip.hardEdge,
+                color: Color(0XFF01426A),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ),
+                child: Column(
+                  
+                  children: <Widget>[
+                    Padding(padding: EdgeInsets.fromLTRB(0, 4, 0, 0),),
+                    Row(
+                      
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                      children: <Widget>[
+                      
+                      Text(
+                      "   " + getMonthName(month) + " " + day.toString(),
+                      style: TextStyle(
+                        color: prefix0.Colors.white,
+                        fontSize: 16,
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                    Text(
+                      formatTime(event),
+                      style: TextStyle(
+                        color: prefix0.Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
+
+                    ],
+                    ),
+                    
+                    Padding(
+                      padding: EdgeInsets.all(4), // text padding
+                    ),
+                    customm.ExpansionTile(
+                      iconColor: Color(0XFF01426A),
+                      backgroundColor: prefix0.Colors.white,
+                      headerBackgroundColor: prefix0.Colors.white,
+                      initiallyExpanded: false,
+                      title: Column(
+                        children: <Widget>[
+                          _singleBlock(day, event),
+                        ],
+                      ),
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.fromLTRB(28, 0, 20, 10),
+                          child: Text(
+                            getDescription(event),
+                            style: TextStyle(color: prefix0.Colors.grey[800]),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                )),
+          ],
+        ));
   }
 
-  Widget eventRow(int day, Map<String, String> event) => Container(
-      // width: 420.0,
-      // height: 140,
-      margin: const EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 15.0),
-      padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
-      decoration: BoxDecoration(
-        color: prefix0.Colors.white,
-        border: Border.all(
-          color: prefix0.Colors.grey[200],
-          style: BorderStyle.solid,
-        ),
-        borderRadius: BorderRadius.all(Radius.circular(15)),
-        boxShadow: [
-          BoxShadow(
-            color: prefix0.Colors.grey[300],
-            blurRadius: 15.0,
-            spreadRadius: 5.0,
-            offset: Offset(
-              5.0,
-              5.0,
-            ),
-          )
-        ],
-      ),
-      child: new Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            InkWell(
-              child: Container(
-                  padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF01426A),
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15.0),
-                        topRight: Radius.circular(15.0)),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        "   " + getMonthName(month) + " " + day.toString(),
-                        style: TextStyle(
-                          color: prefix0.Colors.white,
-                          fontSize: 16,
-                        ),
-                        textAlign: TextAlign.left,
-                      ),
-                      Text(
-                        formatTime(event) + "   ",
-                        style: TextStyle(
-                          color: prefix0.Colors.white,
-                          fontSize: 16,
-                        ),
-                      )
-                    ],
-                  )),
-            ),
-            Padding(
-              padding: EdgeInsets.all(7),
-            ),
-            Container(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: Text(
-                //"Event",
-                getName(event),
-                textAlign: TextAlign.center,
-                softWrap: true,
-                style: TextStyle(
+  Widget _singleBlock(int day, Map<String, String> event) {
+    return
+
+        Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+  
+          Padding(
+            padding: EdgeInsets.all(7), // text padding
+          ),
+          Container(
+            color: prefix0.Colors.white,
+            padding: const EdgeInsets.only(bottom: 15), //text space
+            child: Text(
+              //"Event",
+              getName(event),
+              textAlign: TextAlign.center,
+              softWrap: true,
+              style: TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 18,
+                  color: prefix0.Colors.black),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Icon(
+                Icons.place,
+                size: 16,
+                color: Color(0xFF5B6770),
+              ),
+              Flexible(
+                child: Text(
+                  "  " + getLocations(event),
+                  style: TextStyle(fontSize: 14, color: prefix0.Colors.black54),
+                  textAlign: TextAlign.center,
                 ),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Icon(
-                  Icons.place,
-                  size: 16,
-                  color: Color(0xFF5B6770),
-                ),
-                Flexible(
-                  child: Text(
-                    getLocations(event),
-                    style:
-                        TextStyle(fontSize: 14, color: prefix0.Colors.black54),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ],
-            ),
-            const Padding(padding: EdgeInsets.only(top: 15.0)),
-          ]));
-
+            ],
+          ),
+          const Padding(padding: EdgeInsets.only(top: 15.0)),
+        ]);
+    // );
+  }
 
   List<Widget> eventList() {
     List<Widget> list = [];
@@ -212,10 +244,13 @@ String getEventTime(Map <String,String> event){
       if (currentDay == 0 || currentDay == day) {
         for (var i = 0; i < dayEvents.length; i++) {
           list.add(eventRow(day, dayEvents[i]));
-          list.add(Divider(
-            color: prefix0.Colors.black,
-            height: 0.0,
+          list.add(Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
           ));
+          // list.add(Divider(
+          //   color: prefix0.Colors.black,
+          //   height: 0.0,
+          // ));
         }
       }
     });
@@ -226,7 +261,8 @@ String getEventTime(Map <String,String> event){
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        color: prefix0.Colors.white,
+        color: prefix0.Colors.grey[100],
+        padding: EdgeInsets.all(5),
         child: ListView(
           children: eventList(),
         ),
