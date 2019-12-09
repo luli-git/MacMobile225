@@ -76,12 +76,12 @@ class EventsView extends StatelessWidget {
 
   String formatTime(event) {
     if (DateFormat.Hm().format(DateTime.parse(event['date'])) == "00:00") {
-      return "All Day  ";
+      return "All Day   ";
     } else {
       if(event['name'].contains("Popular")){
         print(event['date']);
       }
-      return  DateFormat.Hm().format(DateTime.parse(event['date'])) + "-" + DateFormat.Hm().format(DateTime.parse(event['end']))  + "  ";
+      return  DateFormat.Hm().format(DateTime.parse(event['date'])) + "-" + DateFormat.Hm().format(DateTime.parse(event['end']))  + "   ";
     }
     // return DateFormat.Hm().format(DateTime.parse(event[start]));
   }
@@ -150,6 +150,7 @@ class EventsView extends StatelessWidget {
                       ),
                       textAlign: TextAlign.left,
                     ),
+                    
                     Text(
                       formatTime(event),
                       style: TextStyle(
@@ -212,7 +213,7 @@ class EventsView extends StatelessWidget {
               softWrap: true,
               style: TextStyle(
                   fontWeight: FontWeight.normal,
-                  fontSize: 18,
+                  fontSize: 17,
                   color: prefix0.Colors.black),
             ),
           ),
