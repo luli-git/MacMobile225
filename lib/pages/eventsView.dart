@@ -48,7 +48,7 @@ class EventsView extends StatelessWidget {
 
   String getLocations(Map <String,String> event){
     if (event['location'] != null){
-      return event['location'];
+      return event[detailField];
     } else {
       return "Macalester College";
     }
@@ -200,10 +200,6 @@ String getEventTime(Map <String,String> event){
                     textAlign: TextAlign.center,
                   ),
                 ),
-                Text(
-                  getEventTime(event),
-                  style: TextStyle(fontSize: 14, color: prefix0.Colors.black54),
-                )
               ],
             ),
             const Padding(padding: EdgeInsets.only(top: 15.0)),

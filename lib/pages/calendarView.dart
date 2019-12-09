@@ -50,6 +50,8 @@ class CalendarView extends StatefulWidget {
 
 class _CalendarState extends State<CalendarView> {
   int _currentMonth;
+  Color _selectedColor;
+  bool _isSelected;
   int _currentYear;
   int _currentDay;
   Map<int, Map<int, Map<int, List>>> _events;
@@ -61,6 +63,8 @@ class _CalendarState extends State<CalendarView> {
     widget.eventStream.listen(_setEvents);
     _currentMonth = DateTime.now().month;
     _currentYear = DateTime.now().year;
+    _selectedColor = Colors.orange;
+    _isSelected = false;
     _currentDay = 0;
     _theme = widget.theme ?? ThemeData.light();
   }
@@ -224,7 +228,17 @@ class _CalendarState extends State<CalendarView> {
     if (_currentDay == day) {
       day = 0;
     }
-    setState(() => _currentDay = day);
+    setState(() {
+
+      _currentDay = day;
+     //_isSelected = true;
+
+    });
+
+
+//    setState(() => _isSelected = true);
+   //setState(() => _currentDay = day);
+
   }
 
   _onEventTapped(Map<String, String> event) {
@@ -247,6 +261,8 @@ class _CalendarState extends State<CalendarView> {
               _currentYear,
               _currentMonth,
               _monthlyEvents(),
+              _isSelected,
+              _selectedColor,
               onTapHandler: _daySelectHandler,
               theme: _theme,
             ),
