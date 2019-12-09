@@ -235,7 +235,6 @@ class _CalendarState extends State<CalendarView> {
     setState(() {
 
       _currentDay = day;
-     //_isSelected = true;
 
     });
 

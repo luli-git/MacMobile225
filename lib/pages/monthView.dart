@@ -77,9 +77,9 @@ class MonthView extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     margin:
-                    EdgeInsets.only(left: 2.0, right: 2.0, top: 3.0),
-                    width: 6.0,
-                    height: 6.0,
+                    EdgeInsets.only(left: 1.0, right: 1.0, top: 1.0),
+                    width: 5.0,
+                    height: 5.0,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.orange,
@@ -92,9 +92,9 @@ class MonthView extends StatelessWidget {
                 children: <Widget>[
                   Container(
                       margin:
-                      EdgeInsets.only(left: 2.0, right: 2.0, top: 3.0),
-                      width: 6.0,
-                      height: 6.0,
+                      EdgeInsets.only(left: 1.0, right: 1.0, top: 0.5),
+                      width: 2.0,
+                      height: 2.0,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.orange,
