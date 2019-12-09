@@ -186,6 +186,9 @@ class _ListPageState extends State<ListPage> {
       if (date.weekday == 6) {
         today = values['saturday'];
       }
+      if (date.weekday == 7) {
+        today = values['sunday'];
+      }
     } else {
       if (1 <= date.weekday && date.weekday <= 4) {
         today = values['mToTR'];

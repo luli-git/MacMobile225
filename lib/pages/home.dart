@@ -298,7 +298,7 @@ class HomeTabStateful extends State<HomeTab> {
                                     borderRadius: BorderRadius.circular(5.0),
                                     image: new DecorationImage(
                                       image: new AssetImage(
-                                        "assets/images/cafemacbeauti.jpeg",
+                                        "assets/images/cafemacbeautismall.jpg",
                                       ),
                                       fit: BoxFit.fill,
                                     )),
@@ -506,4 +506,3 @@ class HomeTabStateful extends State<HomeTab> {
     }
   }
 }
-

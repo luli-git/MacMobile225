@@ -49,6 +49,11 @@ dev_dependencies:
   date_utils: ^0.1.0
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.7.0"
+flutter_icons:
+  image_path: "assets/icon/project_icon2.jpg"
+  android: true
+  ios: true
 
 
 # For information on the generic Dart part of this file, see the
@@ -110,7 +115,7 @@ flutter:
     - assets/images/dining.jpg
     - assets/images/grille.jpg
     - assets/images/scottys.jpeg
-    - assets/images/cafemacbeauti.jpeg
+    - assets/images/cafemacbeautismall.jpg
     - assets/images/HPnew.jpg
     - assets/images/highlandernew.jpg
     - assets/images/jwal.jpg

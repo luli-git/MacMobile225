@@ -109,21 +109,40 @@ class _ListPageState extends State<ListPage> {
       return Colors.red;
     }
   }
+  String getHours(Map values){
+    DateTime date = DateTime.now();
+    String today = date.weekday.toString();
+    if(values['break'] == true){
+
+      return values['b' + today];
+    }
+    else{
+      return values[today];
+    }
+
+  }
 
   String getStatus(Map values){
     DateFormat dateFormat = new DateFormat.Hm();
     DateTime date = DateTime.now();
     String today = date.weekday.toString();
-
-    String ex = values[today];
+    String ex = " ";
+    if(values['break'] != true){
+      ex = values[today];
+    }
+    else{
+      ex = values["b"+today];
+      print(ex);
+    }
+    
     List<String> parts = ex.split("|");
     String status = 'CLOSED';
+
     if(ex!=" "){
       for (String time in parts) {
       String period = time.trim();
       final now = DateTime.now();
       DateTime open = dateFormat.parse(period.split("-")[0]);
-      print(open);
       DateTime close = dateFormat.parse(period.split("-")[1]);
       open = new DateTime(now.year, now.month, now.day, open.hour, open.minute);
       close = new DateTime(now.year, now.month, now.day, close.hour, close.minute);
@@ -172,7 +191,7 @@ class _ListPageState extends State<ListPage> {
                     children: <Widget>[
                       Text(values['name'],
                           style: TextStyle(
-                              fontSize: 19.0,
+                              fontSize: 17.0,
                               fontFamily: 'Lora',
                               color: Colors.black87)),
                       const Padding(padding: EdgeInsets.only(top: 8.0)),
@@ -183,7 +202,7 @@ class _ListPageState extends State<ListPage> {
                         ),
                       const Padding(padding: EdgeInsets.only(top: 8.0)),
 
-                      Text(values[today],
+                      Text(getHours(values),
                           style: TextStyle(
                               fontSize: 14.0, color: Colors.grey[600])),
                     ],
