@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:intl/intl.dart';
 class HoursTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -168,6 +168,51 @@ class _ListPageState extends State<ListPage> {
       ],
     );
   }
+  Color _getStatusColor(String hours){
+    String status = getStatus(hours);
+    if (status == "OPEN") {
+      return Colors.green;
+    }
+    else{
+      return Colors.red;
+    }
+  }
+  String getStatus(String hours){
+    print(hours);
+    DateFormat dateFormat = new DateFormat.Hm();
+    DateTime date = DateTime.now();
+    
+  
+
+    List<String> parts = hours.split("|");
+    String status = 'CLOSED';
+
+    if(hours !=" "){
+      for (String time in parts) {
+      String period = time.trim();
+      final now = DateTime.now();
+      print("!");
+      print(period.split("-")[1]);
+      DateTime open = dateFormat.parse(period.split("-")[0]);
+      DateTime close = dateFormat.parse(period.split("-")[1]);
+      if(period.split("-")[1] == "0:00" || period.split("-")[1] == "1:00"){
+        print("here!");
+        close = new DateTime(now.year, now.month, now.day+1, close.hour, close.minute);
+      }
+      else{
+      open = new DateTime(now.year, now.month, now.day, open.hour, open.minute);
+      close = new DateTime(now.year, now.month, now.day, close.hour, close.minute);}
+      print(close);
+      print("------");
+      if (now.isAfter(open) && now.isBefore(close)) {
+        status = "OPEN";
+              // print("true!");
+      }
+    }
+    }
+ 
+    return status;
+  }
 
   Widget _listTile(Map values) {
     DateTime date = DateTime.now();
@@ -238,9 +283,15 @@ class _ListPageState extends State<ListPage> {
                               fontFamily: 'Lora',
                               color: Colors.black87)),
                       const Padding(padding: EdgeInsets.only(top: 8.0)),
+                      Text(getStatus(today),
+                          style: TextStyle(
+                              fontSize: 15.0, color: _getStatusColor(today))),
+                                                    const Padding(padding: EdgeInsets.only(top: 8.0)),
+
                       Text(today,
                           style: TextStyle(
                               fontSize: 14.0, color: Colors.grey[600])),
+                      
                     ],
                   ),
                 ),

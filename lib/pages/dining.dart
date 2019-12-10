@@ -37,12 +37,12 @@ class DiningTab extends StatelessWidget {
 
 class ListPage extends StatefulWidget {
   @override
-  _ListPageState createState() => _ListPageState();
+  ListPageState createState() => ListPageState();
 }
 
 Future _data;
 
-class _ListPageState extends State<ListPage> {
+class ListPageState extends State<ListPage> {
   static _launchURL(String link) async {
     if (await canLaunch(link)) {
       await launch(link);
