@@ -48,6 +48,9 @@ class CalendarView extends StatefulWidget {
   ///Theme used to style the calendar as needed.
   final ThemeData theme;
 
+
+
+
   @override
   _CalendarState createState() => _CalendarState();
 }
@@ -72,6 +75,9 @@ class _CalendarState extends State<CalendarView> {
     _currentDay = DateTime.now().day;
     _theme = widget.theme ?? ThemeData.light();
   }
+
+
+
 
   /// Processes events and sets state for events in calendar
   /// Used by initState to initialize widget
@@ -233,10 +239,11 @@ class _CalendarState extends State<CalendarView> {
       day = 0;
     }
     setState(() {
-
       _currentDay = day;
 
+
     });
+
 
 
 //    setState(() => _isSelected = true);

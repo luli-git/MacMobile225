@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiver/time.dart';
 import 'calendarInformation.dart';
-
+import 'calendarView.dart';
 class MonthView extends StatelessWidget {
   const MonthView(
       this.year,
@@ -24,27 +24,19 @@ class MonthView extends StatelessWidget {
   final Function onTapHandler;
   final ThemeData theme;
 
-
-  Widget eventDot(int numEvents){
-    return Container(
-        margin:
-        EdgeInsets.only(left: 2.0, right: 2.0, top: 3.0),
-        width: 6.0,
-        height: 6.0,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.orange,
-        )
-    );
-  }
-
-  static bool isToday(int day, int currentDay){
-    if (day == currentDay){
-      return true;
-    } else {
-      return false;
-    }
-  }
+//
+//  Widget eventDot(int numEvents){
+//    return Container(
+//        margin:
+//        EdgeInsets.only(left: 2.0, right: 2.0, top: 3.0),
+//        width: 6.0,
+//        height: 6.0,
+//        decoration: BoxDecoration(
+//          shape: BoxShape.circle,
+//          color: Colors.orange,
+//        )
+//    );
+//  }
 
 
 
@@ -77,7 +69,7 @@ class MonthView extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     margin:
-                    EdgeInsets.only(left: 1.0, right: 1.0, top: 1.0),
+                    EdgeInsets.only(left: 1.0, right: 1.0, top: 0.0),
                     width: 5.0,
                     height: 5.0,
                     decoration: BoxDecoration(
@@ -174,7 +166,7 @@ class MonthView extends StatelessWidget {
   Widget weekdayItem(String text) => (
       Expanded(
           child: Container(
-            padding: EdgeInsets.all(2.0),
+            padding: EdgeInsets.all(0.0),
             child: Center(
               child: Text(
                 text,
@@ -196,7 +188,7 @@ class MonthView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const spacing = 8.0;
+    const spacing = 2.0;
 
     final firstDayOfMonth = DateTime(year, month, 1).weekday;
     final monthOffset = 1 - (firstDayOfMonth % DateTime.daysPerWeek);
