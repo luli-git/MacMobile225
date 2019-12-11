@@ -197,7 +197,7 @@ class MonthView extends StatelessWidget {
     var weekStart = monthOffset;
     List<Widget> weeks = [
       Padding(
-        padding: const EdgeInsets.only(top: 4.0),
+        padding: const EdgeInsets.only(top: 2.0),
         child: weekdayRow(),
       ),
       //Divider(color: Colors.grey, height: 8.0,),
