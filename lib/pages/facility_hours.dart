@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HoursTab extends StatelessWidget {
   @override
@@ -50,21 +51,19 @@ class _ListPageState extends State<ListPage> {
       throw 'Could not launch $link';
     }
   }
+   _launchPhone(String number) async {
+    if (await canLaunch("tel:+" + number)) {
+      await launch("tel:+" + number);
+    } else {
+      throw 'Could not launch $number';
+    }
+  }
 
   Future getPosts() async {
     var firestore = Firestore.instance;
     QuerySnapshot qn = await firestore.collection('facilities').getDocuments();
     return qn.documents;
   }
-
-  // navigateToDetail(DocumentSnapshot post) {
-  //   Navigator.push(
-  //       context,
-  //       MaterialPageRoute(
-  //           builder: (context) => DetailPage(
-  //                 post: post,
-  //               )));
-  // }
 
   Future _data;
   @override
@@ -146,9 +145,13 @@ class _ListPageState extends State<ListPage> {
                         ),
                     const Padding(padding: EdgeInsets.only(top: 5.0)),
                     Container(
+                        child: InkWell(
                       child: Text("Phone: " + values['phone'],
-                          style: TextStyle(color: Colors.black87)),
-                    ),
+                      
+                          style: TextStyle(decoration: TextDecoration.underline,
+                                   )),
+                      onTap: () => _launchPhone(values['phone']),
+                    )),
                     const Padding(padding: EdgeInsets.only(top: 5.0)),
                     Container(
                       child: Text("Location: " + values['location']),
