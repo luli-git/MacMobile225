@@ -1,3 +1,9 @@
+/*
+This file contains lists of month and day names that are used when creating the
+events calendar.
+ */
+
+
 const List<String> monthList = const [
   'January',
   'February',
