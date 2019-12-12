@@ -30,6 +30,7 @@ void main() {
 class MyHome extends StatefulWidget {
   @override
   MyHomeState createState() => MyHomeState();
+  
 }
 
 // SingleTickerProviderStateMixin is used for animation
@@ -41,7 +42,7 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
 
-    controller = new TabController(vsync: this, length: 5);
+    controller = new TabController(vsync: this, length: 4);
     controller.addListener(_handleTabSelection);
   }
 
@@ -80,15 +81,18 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
       body: TabBarView(
         // Add tabs as widgets
         children: <Widget>[
-          HomeTab(),
+          ResourcesTab(),
           DiningTab(),
           HoursTab(),
           EventsPage(),
-          ResourcesTab()
-        ],
+          // EventsPage()
+
+                  ],
+                  
         // set the controller
         controller: controller,
       ),
+      
       // Set the bottom navigation bar
       bottomNavigationBar: Material(
         // set the color of the bottom navigation bar
@@ -129,15 +133,15 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                         color: controller.index == 3
                             ? Color(0xFF01426A)
                             : Color(0xFF5B6770)))),
-            Container(
-                height: 60,
-                width: 100,
-                child: Tab(
-                    text: "Resources",
-                    icon: Icon(Icons.school,
-                        color: controller.index == 4
-                            ? Color(0xFF01426A)
-                            : Color(0xFF5B6770)))),
+                //             Container(
+                // height: 60,
+                // child: Tab(
+                //     text: "Events",
+                //     icon: Icon(Icons.calendar_today,
+                //         color: controller.index == 4
+                //             ? Color(0xFF01426A)
+                //             : Color(0xFF5B6770)))),
+
           ],
           labelColor: Color(0xFF01426A),
           labelPadding: EdgeInsets.all(1),
