@@ -200,7 +200,6 @@ class MonthView extends StatelessWidget {
         padding: const EdgeInsets.only(top: 2.0),
         child: weekdayRow(),
       ),
-      //Divider(color: Colors.grey, height: 8.0,),
     ];
 
     while (weekStart <= lastDayOfMonth) {
