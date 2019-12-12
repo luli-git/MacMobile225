@@ -1,5 +1,7 @@
 # MacMobile
 
+<gif align="right" src="assets/ezgif.com-video-to-gif.gif"
+
 MacMobile is a cross-platform mobile app that is developed using Flutter. This application consolidates
 the important information for members of the Macalester College community, such as the dining hall hours,
 the facility hours, the academic resources, and the daily events.
@@ -35,3 +37,6 @@ eventAPI.dart file calls the Google Calendar API and sorts the events, the event
 implements the design of the events, the monthView.dart file designs the days in the calendar, the
 calendarView.dart implements the overall calendar design, and the calendarView.dart file implements
 much of the important UI, such as switching between months in the calendar.
+
+## Installing
+
