@@ -35,7 +35,6 @@ class EventApi {
         for (Event event in events.items) {
           if ((event.start.dateTime != null || event.start.date != null) &&
               event.summary.contains("Library Hours") == false) {
-            //if (event.summary.contains("Kermesse")) {}
             _allEvents.add(event);
           }
         }
