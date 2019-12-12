@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mac_mobile_attempt/helpers/product_bloc.dart';
-import 'package:mac_mobile_attempt/helpers/product.dart';
+import 'package:mac_mobile_attempt/helpers/resource_bloc.dart';
+import 'package:mac_mobile_attempt/helpers/resource.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:mac_mobile_attempt/ui/common_scaffold.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mac_mobile_attempt/pages/security.dart';
 
 class ResourcesTab extends StatelessWidget {
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -22,7 +19,7 @@ class ResourcesTab extends StatelessWidget {
   
 
   //stack2
-  Widget descStack(Product product) => Positioned(
+  Widget descStack(Resource resource) => Positioned(
         bottom: 0.0,
         left: 0.0,
         right: 0.0,
@@ -37,7 +34,7 @@ class ResourcesTab extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: Text(
-                    product.name,
+                    resource.name,
                     softWrap: true,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(color: Colors.white),
@@ -51,29 +48,29 @@ class ResourcesTab extends StatelessWidget {
       );
 
 
-  Widget productGrid(List<Product> products) => GridView.count(
+  Widget resourceGrid(List<Resource> resources) => GridView.count(
     padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
         crossAxisCount:
             MediaQuery.of(_context).orientation == Orientation.portrait ? 2 : 3,
         shrinkWrap: true,
         primary: false,
-        children: products
-            .map((product) => Padding(
+        children: resources
+            .map((resource) => Padding(
                   padding: const EdgeInsets.fromLTRB(0, 10, 15, 10),
                   child: InkWell(
                     // borderRadius: BorderRadius.all(Radius.circular(54.0)),
-                    onTap: () => _launchURL(product.link),
+                    onTap: () => _launchURL(resource.link),
                     splashColor: Colors.white,
                     child: Material(
                       color: Colors.white.withOpacity(0),
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       clipBehavior: Clip.antiAlias,
-                      elevation: 2.0,
+                      elevation: 3.0,
                       child: Stack(
-                        fit: StackFit.expand,
+                        fit: StackFit.passthrough,
                         children: <Widget>[
-                          imageStack(product.image),
-                          descStack(product),
+                          imageStack(resource.image),
+                          descStack(resource),
                         ],
                       ),
                     ),
@@ -82,81 +79,72 @@ class ResourcesTab extends StatelessWidget {
             .toList(),
       );
 
-  List<Product> getAcademic(List<Product> products) {
-    List<Product> academic = [];
-    for (var i=0; i<products.length; i++) {
-      if (products[i].category=="academic") {
-        academic.add(products[i]);
+  List<Resource> getAcademic(List<Resource> resources) {
+    List<Resource> academic = [];
+    for (var i=0; i<resources.length; i++) {
+      if (resources[i].category=="academic") {
+        academic.add(resources[i]);
       }
     }
     return academic;
   }
 
-  List<Product> getLife(List<Product> products) {
-    List<Product> life = [];
-    for (var i=0; i<products.length; i++) {
-      if (products[i].category=="life") {
-        life.add(products[i]);
+  List<Resource> getLife(List<Resource> resources) {
+    List<Resource> life = [];
+    for (var i=0; i<resources.length; i++) {
+      if (resources[i].category=="life") {
+        life.add(resources[i]);
       }
     }
     return life;
   }
 
-  List<Product> getCareer(List<Product> products) {
-    List<Product> career = [];
-    for (var i=0; i<products.length; i++) {
-      if (products[i].category=="career") {
-        career.add(products[i]);
+  List<Resource> getCareer(List<Resource> resources) {
+    List<Resource> career = [];
+    for (var i=0; i<resources.length; i++) {
+      if (resources[i].category=="career") {
+        career.add(resources[i]);
       }
     }
     return career;
   }
 
   Widget academicData() {
-    ProductBloc productBloc = ProductBloc();
-    return StreamBuilder<List<Product>>(
-        stream: productBloc.productItems,
+    ResourceBloc resourceBloc = ResourceBloc();
+    resourceBloc.resourceBloc();
+    return StreamBuilder<List<Resource>>(
+        stream: resourceBloc.resourceItems,
         builder: (context, snapshot) {
-          print("??????????????"+snapshot.hasData.toString()+"??????????");
           return snapshot.hasData
-              ? productGrid(getAcademic(snapshot.data))
+              ? resourceGrid(getAcademic(snapshot.data))
               : Center(child: CircularProgressIndicator());
         });
   }
 
   Widget lifeData() {
-    ProductBloc productBloc = ProductBloc();
-    return StreamBuilder<List<Product>>(
-        stream: productBloc.productItems,
+    ResourceBloc resourceBloc = ResourceBloc();
+    resourceBloc.resourceBloc();
+    return StreamBuilder<List<Resource>>(
+        stream: resourceBloc.resourceItems,
         builder: (context, snapshot) {
           return snapshot.hasData
-              ? productGrid(getLife(snapshot.data))
+              ? resourceGrid(getLife(snapshot.data))
               : Center(child: CircularProgressIndicator());
         });
   }
 
   Widget careerData() {
-    ProductBloc productBloc = ProductBloc();
-    return StreamBuilder<List<Product>>(
-        stream: productBloc.productItems,
+    ResourceBloc resourceBloc = ResourceBloc();
+    resourceBloc.resourceBloc();
+    return StreamBuilder<List<Resource>>(
+        stream: resourceBloc.resourceItems,
         builder: (context, snapshot) {
           return snapshot.hasData
-              ? productGrid(getCareer(snapshot.data))
+              ? resourceGrid(getCareer(snapshot.data))
               : Center(child: CircularProgressIndicator());
         });
   }
   
-
-  // Widget bodyData() {
-  //   ProductBloc productBloc = ProductBloc();
-  //   return StreamBuilder<List<Product>>(
-  //       stream: productBloc.productItems,
-  //       builder: (context, snapshot) {
-  //         return snapshot.hasData
-  //             ? productGrid(snapshot.data)
-  //             : Center(child: CircularProgressIndicator());
-  //       });
-  // }
 
 
     Widget bodyData() {

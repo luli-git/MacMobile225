@@ -1,18 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:googleapis/calendar/v3.dart' as prefix0;
-import 'package:mac_mobile_attempt/pages/ServiceLocator.dart';
-import 'package:mac_mobile_attempt/pages/calendar_tile.dart';
-import 'package:mac_mobile_attempt/pages/eventAPI.dart';
+import 'package:mac_mobile_attempt/helpers/ServiceLocator.dart';
+import 'package:mac_mobile_attempt/helpers/eventAPI.dart';
 import 'package:mac_mobile_attempt/pages/eventTabPage.dart';
-import 'package:mac_mobile_attempt/pages/events.dart';
-//import 'package:mac_mobile_attempt/pages/flutter_clean_calendar.dart';
-import 'package:mac_mobile_attempt/pages/home.dart';
 import 'pages/resources.dart';
 import 'pages/dining.dart';
-import 'pages/events.dart';
 import 'pages/facility_hours.dart';
-import 'pages/eventAPI.dart';
-//import 'pages/calendar.dart';
 
 void main() {
   EventApi.initEvents();
@@ -30,7 +22,6 @@ void main() {
 class MyHome extends StatefulWidget {
   @override
   MyHomeState createState() => MyHomeState();
-  
 }
 
 // SingleTickerProviderStateMixin is used for animation
@@ -65,18 +56,6 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
     EventApi.initEvents();
 
     return Scaffold(
-      // Appbar
-      // appBar: AppBar(
-      //   // Title
-      //   title: Image.asset(
-      //     'assets/images/mac-primary-logo-spot blue.png',
-      //     height: 45,
-      //   ),
-      //   centerTitle: true,
-      //   // Set the background color of the App Bar
-      //   backgroundColor : Color(0xFF501426A).withOpacity(0.4),
-        
-      // ),
       // Set the TabBar view as the body of the Scaffold
       body: TabBarView(
         // Add tabs as widgets
@@ -85,14 +64,12 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
           DiningTab(),
           HoursTab(),
           EventsPage(),
-          // EventsPage()
+        ],
 
-                  ],
-                  
         // set the controller
         controller: controller,
       ),
-      
+
       // Set the bottom navigation bar
       bottomNavigationBar: Material(
         // set the color of the bottom navigation bar
@@ -101,7 +78,7 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
         child: TabBar(
           tabs: [
             Container(
-              height: 60.0,
+              height: 55.0,
               child: new Tab(
                   text: "Home",
                   icon: Icon(Icons.home,
@@ -110,7 +87,7 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                           : Color(0xFF5B6770))),
             ),
             Container(
-                height: 60,
+                height: 55,
                 child: Tab(
                     text: "Dining",
                     icon: Icon(Icons.fastfood,
@@ -118,7 +95,7 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                             ? Color(0xFF01426A)
                             : Color(0xFF5B6770)))),
             Container(
-                height: 60,
+                height: 55,
                 child: Tab(
                     text: "Hours",
                     icon: Icon(Icons.access_time,
@@ -126,27 +103,17 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                             ? Color(0xFF01426A)
                             : Color(0xFF5B6770)))),
             Container(
-                height: 60,
+                height: 55,
                 child: Tab(
                     text: "Events",
                     icon: Icon(Icons.calendar_today,
                         color: controller.index == 3
                             ? Color(0xFF01426A)
                             : Color(0xFF5B6770)))),
-                //             Container(
-                // height: 60,
-                // child: Tab(
-                //     text: "Events",
-                //     icon: Icon(Icons.calendar_today,
-                //         color: controller.index == 4
-                //             ? Color(0xFF01426A)
-                //             : Color(0xFF5B6770)))),
-
           ],
           labelColor: Color(0xFF01426A),
-          labelPadding: EdgeInsets.all(1),
+          labelPadding: EdgeInsets.fromLTRB(0, 0.001, 0, 0),
           unselectedLabelColor: Color(0xFF5B6770),
-          // labelStyle: TextStyle(fontSize: 15),
           controller: controller,
         ),
       ),

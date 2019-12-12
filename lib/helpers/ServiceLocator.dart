@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import './TelService.dart';
+import 'package:mac_mobile_attempt/helpers/TelService.dart';
 
 GetIt locator = GetIt();
 void setupLocator() {

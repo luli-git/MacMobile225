@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:intl/intl.dart';
+
 class HoursTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,8 +18,7 @@ class HoursTab extends StatelessWidget {
             backgroundColor: Color(0xFF501426A).withOpacity(0.9),
             flexibleSpace: FlexibleSpaceBar(
                 centerTitle: false,
-                title: 
-                Text("Facility Hours",
+                title: Text("Facility Hours",
                     style: TextStyle(
                         color: Colors.blue[50],
                         fontSize: 20.0,
@@ -86,10 +86,6 @@ class _ListPageState extends State<ListPage> {
                     itemCount: snapshot.data.length,
                     itemBuilder: (_, index) {
                       return _expansionTile(snapshot.data[index].data);
-                      // ListTile(
-                      //   title: Text(snapshot.data[index].data['name']),
-                      //   onTap: () => navigateToDetail(snapshot.data[index]),
-                      // );
                     });
               }
             }));
@@ -135,7 +131,6 @@ class _ListPageState extends State<ListPage> {
                         onTap: () => _launchURL("https://" + values['link']),
                         child: Text.rich(
                           TextSpan(
-                            text: 'Website: ',
                             children: <TextSpan>[
                               TextSpan(
                                   text: values['link'],
@@ -168,56 +163,63 @@ class _ListPageState extends State<ListPage> {
       ],
     );
   }
-  Color _getStatusColor(String hours){
+
+  Color _getStatusColor(String hours) {
     String status = getStatus(hours);
     if (status == "OPEN") {
       return Colors.green;
-    }
-    else{
+    } else {
       return Colors.red;
     }
   }
-  String getStatus(String hours){
-    print(hours);
+
+  String getStatus(String hours) {
     DateFormat dateFormat = new DateFormat.Hm();
     DateTime date = DateTime.now();
-    
-  
-
     List<String> parts = hours.split("|");
     String status = 'CLOSED';
 
-    if(hours !=" "){
+    if (hours != " ") {
       for (String time in parts) {
-      String period = time.trim();
-      final now = DateTime.now();
-      print("!");
-      print(period.split("-")[1]);
-      DateTime open = dateFormat.parse(period.split("-")[0]);
-      DateTime close = dateFormat.parse(period.split("-")[1]);
-      if(period.split("-")[1] == "0:00" || period.split("-")[1] == "1:00"){
-        print("here!");
-        close = new DateTime(now.year, now.month, now.day+1, close.hour, close.minute);
-      }
-      else{
-      open = new DateTime(now.year, now.month, now.day, open.hour, open.minute);
-      close = new DateTime(now.year, now.month, now.day, close.hour, close.minute);}
-      print(close);
-      print("------");
-      if (now.isAfter(open) && now.isBefore(close)) {
-        status = "OPEN";
-              // print("true!");
+        String period = time.trim();
+        final now = DateTime.now();
+        DateTime open = dateFormat.parse(period.split("-")[0]);
+        DateTime close = dateFormat.parse(period.split("-")[1]);
+        if (period.split("-")[1] == "0:00" || period.split("-")[1] == "1:00") {
+          close = new DateTime(
+              now.year, now.month, now.day + 1, close.hour, close.minute);
+        } else {
+          open = new DateTime(
+              now.year, now.month, now.day, open.hour, open.minute);
+          close = new DateTime(
+              now.year, now.month, now.day, close.hour, close.minute);
+        }
+        if (now.isAfter(open) && now.isBefore(close)) {
+          status = "OPEN";
+        }
       }
     }
-    }
- 
+
     return status;
   }
 
   Widget _listTile(Map values) {
     DateTime date = DateTime.now();
     String today;
-
+    if (values['name'] == 'Health and Wellness Center') {
+      if (date.weekday == 1 || date.weekday == 5) {
+        today = values['monday'];
+      }
+      if (date.weekday == 2 || date.weekday == 3) {
+        today = values['wednesday'];
+      }
+      if (date.weekday == 4) {
+        today = values['thursday'];
+      }
+      if (date.weekday == 6 || date.weekday == 7) {
+        today = values['saturday'];
+      }
+    }
     if (values['name'] == 'Pool') {
       if (date.weekday == 1 || date.weekday == 3) {
         today = values['mw'];
@@ -286,12 +288,10 @@ class _ListPageState extends State<ListPage> {
                       Text(getStatus(today),
                           style: TextStyle(
                               fontSize: 15.0, color: _getStatusColor(today))),
-                                                    const Padding(padding: EdgeInsets.only(top: 8.0)),
-
+                      const Padding(padding: EdgeInsets.only(top: 8.0)),
                       Text(today,
                           style: TextStyle(
                               fontSize: 14.0, color: Colors.grey[600])),
-                      
                     ],
                   ),
                 ),
@@ -303,29 +303,3 @@ class _ListPageState extends State<ListPage> {
     );
   }
 }
-
-// class DetailPage extends StatefulWidget {
-//   final DocumentSnapshot post;
-//   DetailPage({this.post});
-
-//   @override
-//   _DetailPageState createState() => _DetailPageState();
-// }
-
-// class _DetailPageState extends State<DetailPage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         appBar: AppBar(
-//           title: Text("haha"),
-//         ),
-//         body: Container(
-//             child: Card(
-//                 child: ListTile(
-//           title: Text(widget.post.data['link']),
-//           subtitle: Text(
-//             widget.post.data['phone'],
-//           ),
-//         ))));
-//   }
-// }

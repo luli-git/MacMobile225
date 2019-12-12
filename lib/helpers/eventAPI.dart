@@ -1,11 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/material.dart' as prefix0;
 import 'package:googleapis/calendar/v3.dart';
-import 'package:googleapis/calendar/v3.dart' as prefix1;
 import 'package:googleapis_auth/auth_io.dart';
-import 'package:flutter_multiselect/flutter_multiselect.dart';
-import 'multiSelectChip.dart';
-import 'events.dart';
 
 final _credentials = new ServiceAccountCredentials.fromJson(r'''
 {
@@ -34,27 +28,17 @@ class EventApi {
           .list('22b3ifdsq64j7c3uvk17523lq8gts1ja@import.calendar.google.com')
           .then((events) {
         for (Event event in events.items) {
-          
-          
-          if ((event.start.dateTime != null || event.start.date != null) && event.summary.contains("Library Hours") == false){
-            if(event.summary.contains("Kermesse")){
-              print(event.description);
-              print("haha");
-            }
+          if ((event.start.dateTime != null || event.start.date != null) &&
+              event.summary.contains("Library Hours") == false) {
+            if (event.summary.contains("Kermesse")) {}
             _allEvents.add(event);
-            
-            // print(_allEvents[0].description);
           }
         }
-
-    });
       });
-        }
+    });
+  }
 
   static List<Event> getAllEvents() {
-    //_allEvents.sort();
-         //print(_allEvents[3].eventName.toString());
-
     return _allEvents;
   }
 }

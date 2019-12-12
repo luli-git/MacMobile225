@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mac_mobile_attempt/pages/security.dart';
+import 'package:mac_mobile_attempt/helpers/security.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:image_ink_well/image_ink_well.dart';
 

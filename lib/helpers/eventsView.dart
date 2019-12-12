@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
 import 'package:intl/intl.dart';
-import 'package:googleapis/calendar/v3.dart';
-import 'package:mac_mobile_attempt/helpers/custom_expansion_tile.dart'
-    as customm;
-import 'package:configurable_expansion_tile/configurable_expansion_tile.dart';
+import 'package:mac_mobile_attempt/helpers/custom_expansion_tile.dart' as customm;
 
 class EventsView extends StatelessWidget {
   const EventsView(
@@ -34,15 +31,14 @@ class EventsView extends StatelessWidget {
 
   String getDescription(Map<String, String> event) {
     if (event['description'] != null) {
-
       event['description'] = event['description'].replaceAll('&quot;', " ");
-      event['description'] = event['description'].replaceAll('&nbsp;', " "); //.split('Sponsored by')[1];
-      event['description'] = event['description'].split("Sponsored by ")[0]; //.split('Sponsored by')[1];
-      if(event['description'].contains("&")){
-        print(event['name']);
+      event['description'] = event['description']
+          .replaceAll('&nbsp;', " "); //.split('Sponsored by')[1];
+      event['description'] = event['description']
+          .split("Sponsored by ")[0]; //.split('Sponsored by')[1];
+      if (event['description'].contains("&")) {
       }
-        return event[desField];
-      
+      return event[desField];
     } else {
       return " ";
     }
@@ -50,7 +46,6 @@ class EventsView extends StatelessWidget {
 
   String getLocations(Map<String, String> event) {
     if (event['location'] != null) {
-      // print(event.keys);
       return event[detailField];
     } else {
       return "Macalester College";
@@ -65,25 +60,18 @@ class EventsView extends StatelessWidget {
     }
   }
 
-  // String getEventTime(Map<String, String> event, String start) {
-  //   if (DateFormat.Hm().format(DateTime.parse(event[start])) == "00:00") {
-  //     return "All Day";
-  //   } else {
-  //     print(event['date']);
-  //     return  DateFormat.Hm().format(DateTime.parse(event[start]));
-  //   }
-  // }
 
   String formatTime(event) {
     if (DateFormat.Hm().format(DateTime.parse(event['date'])) == "00:00") {
       return "All Day   ";
     } else {
-      if(event['name'].contains("Popular")){
-        print(event['date']);
+      if (event['name'].contains("Popular")) {
       }
-      return  DateFormat.Hm().format(DateTime.parse(event['date'])) + "-" + DateFormat.Hm().format(DateTime.parse(event['end']))  + "   ";
+      return DateFormat.Hm().format(DateTime.parse(event['date'])) +
+          "-" +
+          DateFormat.Hm().format(DateTime.parse(event['end'])) +
+          "   ";
     }
-    // return DateFormat.Hm().format(DateTime.parse(event[start]));
   }
 
   String getMonthName(int month) {
@@ -133,35 +121,30 @@ class EventsView extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
                 child: Column(
-                  
                   children: <Widget>[
-                    Padding(padding: EdgeInsets.fromLTRB(0, 4, 0, 0),),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(0, 4, 0, 0),
+                    ),
                     Row(
-                      
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                      
-                      Text(
-                      "   " + getMonthName(month) + " " + day.toString(),
-                      style: TextStyle(
-                        color: prefix0.Colors.white,
-                        fontSize: 16,
-                      ),
-                      textAlign: TextAlign.left,
+                        Text(
+                          "   " + getMonthName(month) + " " + day.toString(),
+                          style: TextStyle(
+                            color: prefix0.Colors.white,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                        Text(
+                          formatTime(event),
+                          style: TextStyle(
+                            color: prefix0.Colors.white,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
                     ),
-                    
-                    Text(
-                      formatTime(event),
-                      style: TextStyle(
-                        color: prefix0.Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
-
-                    ],
-                    ),
-                    
                     Padding(
                       padding: EdgeInsets.all(4), // text padding
                     ),
@@ -192,14 +175,11 @@ class EventsView extends StatelessWidget {
   }
 
   Widget _singleBlock(int day, Map<String, String> event) {
-    return
-
-        Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-  
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
           Padding(
             padding: EdgeInsets.all(7), // text padding
           ),
@@ -236,7 +216,6 @@ class EventsView extends StatelessWidget {
           ),
           const Padding(padding: EdgeInsets.only(top: 15.0)),
         ]);
-    // );
   }
 
   List<Widget> eventList() {
@@ -248,10 +227,6 @@ class EventsView extends StatelessWidget {
           list.add(Padding(
             padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
           ));
-          // list.add(Divider(
-          //   color: prefix0.Colors.black,
-          //   height: 0.0,
-          // ));
         }
       }
     });
