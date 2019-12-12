@@ -1,12 +1,13 @@
 # MacMobile
 
-<gif align="right" src="assets/ezgif.com-video-to-gif.gif"
 
 MacMobile is a cross-platform mobile app that is developed using Flutter. This application consolidates
 the important information for members of the Macalester College community, such as the dining hall hours,
 the facility hours, the academic resources, and the daily events.
 
 ## App Structure
+
+![](assets/ezgif.com-video-to-gif.gif)
 
 The app is structured into four tabs: Home, Dining, Hours, and Events. The home page includes numerous
 buttons that contain links to many of the important online resources at Macalester, such as Moodle and
