@@ -1,8 +1,14 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:googleapis/calendar/v3.dart';
-import 'package:mac_mobile_attempt/helpers/eventAPI.dart';
-import 'package:mac_mobile_attempt/helpers/calendarView.dart';
+import 'package:mac_mobile_attempt/helpers/event_API.dart';
+import 'package:mac_mobile_attempt/helpers/calendar_view.dart';
+
+/*
+This file initializes the list of events and maps each event to a certain date
+on the calendar. It also uses the calendar helpers to build the events tap widget
+which appears on the application.
+ */
 
 class EventsPage extends StatefulWidget {
   @override
@@ -240,6 +246,15 @@ class EventPageStateful extends State<EventsPage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return new Scaffold(
+      appBar: AppBar(
+        // Title
+        title: Image.asset(
+          'assets/images/maclogo.jpg',
+          height: 30,
+        ),
+        centerTitle: true,
+        // Set the background color of the App Bar
+        backgroundColor : Color(0xFF501426A).withOpacity(1),),
       body: new Center(
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,

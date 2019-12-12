@@ -39,6 +39,8 @@ implements the design of the events, the monthView.dart file designs the days in
 calendarView.dart implements the overall calendar design, and the calendarView.dart file implements
 much of the important UI, such as switching between months in the calendar.
 
+All files outside of the lib folder were provided by Flutter or Firebase.
+
 ## Installing
 
 To install and run this repository on your computer, a coding software such as Android Studio (recommended)

@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
 import 'package:intl/intl.dart';
-import 'package:mac_mobile_attempt/helpers/custom_expansion_tile.dart' as customm;
+import 'package:mac_mobile_attempt/helpers/custom_expansion_tile.dart' as custom;
+
+
+/*
+This file creates the design of the widgets that display the events on the
+events Tab.
+ */
 
 class EventsView extends StatelessWidget {
   const EventsView(
@@ -148,7 +154,7 @@ class EventsView extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.all(4), // text padding
                     ),
-                    customm.ExpansionTile(
+                    custom.ExpansionTile(
                       iconColor: Color(0XFF01426A),
                       backgroundColor: prefix0.Colors.white,
                       headerBackgroundColor: prefix0.Colors.white,

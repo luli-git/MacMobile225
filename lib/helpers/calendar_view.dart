@@ -1,10 +1,15 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:mac_mobile_attempt/helpers/calendar_information.dart';
+import 'package:mac_mobile_attempt/helpers/events_view.dart';
+import 'package:mac_mobile_attempt/helpers/month_view.dart';
 
-import 'package:mac_mobile_attempt/helpers/calendarInformation.dart';
-import 'package:mac_mobile_attempt/helpers/eventsView.dart';
-import 'package:mac_mobile_attempt/helpers/monthView.dart';
+
+/*
+This file initializes the design of the calendar in the Events tab. It also updates
+the states of certain variables depending on user actions. For example, if a day in
+the calendar is tapped, the state of the _currentDay variable is updated.
+ */
 
 class CalendarView extends StatefulWidget {
   CalendarView({
@@ -214,25 +219,6 @@ class _CalendarState extends State<CalendarView> {
       ),
     );
   }
-
-  // Widget _separator() {
-  //   return Row(
-  //     children: <Widget>[
-  //       Expanded(
-  //         child: Container(
-  //           padding: EdgeInsets.symmetric(vertical: 4.0),
-  //           color: Color(0xFF01426A),
-  //           child: Text(
-  //             widget.separatorTitle,
-  //             style: TextStyle(color: Colors.white,fontSize: 20),
-  //             //style: _theme.accentTextTheme.display1,
-  //             textAlign: TextAlign.center,
-  //           ),
-  //         ),
-  //       )
-  //     ],
-  //   );
-  // }
 
   _daySelectHandler(int day) {
     if (_currentDay == day) {

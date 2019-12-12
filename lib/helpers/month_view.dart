@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:quiver/time.dart';
-import 'calendarInformation.dart';
+import 'calendar_information.dart';
+
+/*
+This file creates the layout of the days in each month on the calendar. It also
+creates the dots that appear on the calendar if a certain day contains an event.
+ */
+
 class MonthView extends StatelessWidget {
   const MonthView(
       this.year,
@@ -62,67 +68,7 @@ class MonthView extends StatelessWidget {
                   )
                   ),
                 ],
-            ): (hasEvent == true && numEvent == 2 )
-                  ?  Row (
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                      margin:
-                      EdgeInsets.only(left: 1.0, right: 1.0, top: 0.5),
-                      width: 2.0,
-                      height: 2.0,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.orange,
-                      )
-                  ),
-                  Container(
-                      margin:
-                      EdgeInsets.only(left: 2.0, right: 2.0, top: 3.0),
-                      width: 6.0,
-                      height: 6.0,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.orange,
-                      )
-                  ),
-                ],
-              ): (hasEvent == true && numEvent >= 3 )
-                  ?  Row (
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                      margin:
-                      EdgeInsets.only(left: 2.0, right: 2.0, top: 3.0),
-                      width: 6.0,
-                      height: 6.0,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.orange,
-                      )
-                  ),
-                  Container(
-                      margin:
-                      EdgeInsets.only(left: 2.0, right: 2.0, top: 3.0),
-                      width: 6.0,
-                      height: 6.0,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.orange,
-                      )
-                  ),
-                  Container(
-                      margin:
-                      EdgeInsets.only(left: 2.0, right: 2.0, top: 3.0),
-                      width: 6.0,
-                      height: 6.0,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.orange,
-                      )
-                  ),
-                ],
-              ): Container()
+            ): Container()
 
           ]),
         ),

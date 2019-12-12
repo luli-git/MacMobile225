@@ -1,6 +1,12 @@
 import 'package:googleapis/calendar/v3.dart';
 import 'package:googleapis_auth/auth_io.dart';
 
+/*
+This file calls the Macalester Google Calendar API. It then loops through the events
+in the Google Calendar and adds them to a list which is used in the creation
+of the events tab calendar.
+*/
+
 final _credentials = new ServiceAccountCredentials.fromJson(r'''
 {
  
@@ -11,7 +17,6 @@ final _credentials = new ServiceAccountCredentials.fromJson(r'''
   "orderBy": "updated",
   "type": "service_account",
   "singleEvents": "true",
-
   "maxResults" : "2000"
  
   }''');
@@ -30,7 +35,7 @@ class EventApi {
         for (Event event in events.items) {
           if ((event.start.dateTime != null || event.start.date != null) &&
               event.summary.contains("Library Hours") == false) {
-            if (event.summary.contains("Kermesse")) {}
+            //if (event.summary.contains("Kermesse")) {}
             _allEvents.add(event);
           }
         }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mac_mobile_attempt/helpers/ServiceLocator.dart';
-import 'package:mac_mobile_attempt/helpers/eventAPI.dart';
-import 'package:mac_mobile_attempt/pages/eventTabPage.dart';
+import 'package:mac_mobile_attempt/helpers/service_locator.dart';
+import 'package:mac_mobile_attempt/helpers/event_API.dart';
+import 'package:mac_mobile_attempt/pages/events.dart';
 import 'pages/resources.dart';
-import 'pages/dining.dart';
+import 'pages/dinings.dart';
 import 'pages/facility_hours.dart';
 
 void main() {
