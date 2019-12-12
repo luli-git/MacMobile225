@@ -21,7 +21,7 @@ class DiningTab extends StatelessWidget {
                 title: Text("Dining",
                     style: TextStyle(
                         color: Colors.blue[50],
-                        fontSize: 20.0,
+                        fontSize: 18.0,
                         fontWeight: FontWeight.normal)),
                 background: Image.asset(
                   "assets/images/ccnew.jpg",

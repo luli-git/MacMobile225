@@ -81,6 +81,7 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
               height: 55.0,
               child: new Tab(
                   text: "Home",
+                
                   icon: Icon(Icons.home,
                       color: controller.index == 0
                           ? Color(0xFF01426A)

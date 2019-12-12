@@ -22,7 +22,7 @@ class HoursTab extends StatelessWidget {
                 title: Text("Facility Hours",
                     style: TextStyle(
                         color: Colors.blue[50],
-                        fontSize: 20.0,
+                        fontSize: 18.0,
                         fontWeight: FontWeight.normal)),
                 background: Image.asset(
                   "assets/images/jwalblue.jpg",
@@ -134,7 +134,7 @@ class _ListPageState extends State<ListPage> {
                               TextSpan(
                                   text: values['link'],
                                   style: TextStyle(
-                                    decoration: TextDecoration.underline,
+                                    // decoration: TextDecoration.underline,
                                     color: Colors.blue,
                                   )),
                               // can add more TextSpans here...
