@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiver/time.dart';
 import 'calendarInformation.dart';
-import 'calendarView.dart';
 class MonthView extends StatelessWidget {
   const MonthView(
       this.year,
@@ -23,21 +22,6 @@ class MonthView extends StatelessWidget {
   final Map<int, List> events;
   final Function onTapHandler;
   final ThemeData theme;
-
-//
-//  Widget eventDot(int numEvents){
-//    return Container(
-//        margin:
-//        EdgeInsets.only(left: 2.0, right: 2.0, top: 3.0),
-//        width: 6.0,
-//        height: 6.0,
-//        decoration: BoxDecoration(
-//          shape: BoxShape.circle,
-//          color: Colors.orange,
-//        )
-//    );
-//  }
-
 
 
   Widget dayMarker(int day, bool hasEvent, int numEvent) => (
@@ -188,7 +172,7 @@ class MonthView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const spacing = 2.0;
+    const spacing = 0.001;
 
     final firstDayOfMonth = DateTime(year, month, 1).weekday;
     final monthOffset = 1 - (firstDayOfMonth % DateTime.daysPerWeek);

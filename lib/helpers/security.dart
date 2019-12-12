@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:url_launcher/url_launcher.dart';
 import 'ServiceLocator.dart';
-import 'TelService.dart';
+import 'package:mac_mobile_attempt/helpers/TelService.dart';
 
 
 class Security extends StatelessWidget {

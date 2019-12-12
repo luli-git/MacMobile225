@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'calendarInformation.dart';
-import 'eventsView.dart';
-import 'monthView.dart';
+import 'package:mac_mobile_attempt/helpers/calendarInformation.dart';
+import 'package:mac_mobile_attempt/helpers/eventsView.dart';
+import 'package:mac_mobile_attempt/helpers/monthView.dart';
 
 class CalendarView extends StatefulWidget {
   CalendarView({
