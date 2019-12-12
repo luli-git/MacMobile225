@@ -10,7 +10,7 @@
 #endif
 #endif
 
-#import "FLTFirebaseAnalyticsPlugin.h"
+#import "FirebaseAnalyticsPlugin.h"
 #import "UserAgent.h"
 
 FOUNDATION_EXPORT double firebase_analyticsVersionNumber;

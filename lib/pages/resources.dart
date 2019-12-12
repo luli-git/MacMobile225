@@ -221,7 +221,7 @@ class ResourcesTab extends StatelessWidget {
         // Title
         title: Image.asset(
           'assets/images/maclogo.jpg',
-          height: 50,
+          height: 38,
         ),
         centerTitle: true,
         // Set the background color of the App Bar
