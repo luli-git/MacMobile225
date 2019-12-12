@@ -240,15 +240,14 @@ class EventPageStateful extends State<EventsPage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return new Scaffold(
-      appBar: AppBar(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(35),
+        child:AppBar(
         // Title
-        title: Image.asset(
-          'assets/images/maclogo.jpg',
-          height: 30,
-        ),
+        title: Text("Events", style: TextStyle(fontSize: 20),),
         centerTitle: true,
         // Set the background color of the App Bar
-        backgroundColor : Color(0xFF501426A).withOpacity(1),),
+        backgroundColor : Color(0xFF501426A).withOpacity(1),),),
       body: new Center(
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
