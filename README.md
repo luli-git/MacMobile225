@@ -7,7 +7,7 @@ the facility hours, the academic resources, and the daily events.
 
 ## App Structure
 
-![](assets/ezgif.com-video-to-gif.gif)
+![](assets/AppDemo.gif)
 
 The app is structured into four tabs: Home, Dining, Hours, and Events. The home page includes numerous
 buttons that contain links to many of the important online resources at Macalester, such as Moodle and
@@ -41,3 +41,20 @@ much of the important UI, such as switching between months in the calendar.
 
 ## Installing
 
+To install and run this repository on your computer, a coding software such as Android Studio (recommended)
+or Visual Studio Code must be installed on your computer. Additionally, you should follow the instructions
+on the Flutter website (https://flutter.dev/docs/get-started/install) to install Flutter and mobile
+emulators. Then by cloning this repository into your coding software and running it on a mobile emulator,
+you should be able to easily run the application. This app is currently not available for mobile distribution
+on the App Store, but we hope for this to be possible in the future.
+
+## Authors
+
+Ellen Chen, Lu Li, Yiming Miao, Zachary Fried
+
+## Acknowledgements
+
+* Shilad Sen
+* Macalester College
+* COMP-225 Classmates
+* MIT License
