@@ -48,7 +48,7 @@ or Visual Studio Code must be installed on your computer. Additionally, you shou
 on the Flutter website (https://flutter.dev/docs/get-started/install) to install Flutter and mobile
 emulators.If you intend to run this app using the iPhone simulator, ensure that you have the most
 recent version of XCode downloaded on your computer. Then by cloning this repository into your programming editor, you
-can run this device on your emulators. The details of this step may depend on the editor you are using. For example, if you are using
+can run this device on your emulators. The details of this step may depend on th editor you are using. For example, if you are using
 Android Studio, the instructions for this can be found at this website (https://flutter.dev/docs/get-started/editor). Additionally, if you have an iPhone, you can follow
 the instructions at the following link (https://kobiton.com/topics/develop-deploy-and-test-flutter-apps/)
 to run this application on your iPhone. This app is currently not available for mobile distribution
