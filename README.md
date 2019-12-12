@@ -32,12 +32,12 @@ folder are those that are directly called by main.dart and are used to create th
 For example, dining.dart programs the design of the dining page which is displayed on the app.
 
 The files in the helpers folder assist those in the pages folder by either storing data, interacting
-with Firebase, making API calls, or specifying certain design aspects. As an example, the eventTabPage.dart
+with Firebase, making API calls, or specifying certain design aspects. As an example, the events.dart
 file in the pages folder programs the events tab on the app. However, in the helpers folder, the
-eventAPI.dart file calls the Google Calendar API and sorts the events, the eventsView.dart file
-implements the design of the events, the monthView.dart file designs the days in the calendar, the
-calendarView.dart implements the overall calendar design, and the calendarView.dart file implements
-much of the important UI, such as switching between months in the calendar.
+event_API.dart file calls the Google Calendar API and sorts the events, the events_view.dart file
+implements the design of the events, the month_view.dart file designs the days in the calendar, and the
+calendar_view.dart implements the overall calendar design and programs some of the calendar UI
+interactions such as switching between months.
 
 All files outside of the lib folder were provided by Flutter or Firebase.
 
