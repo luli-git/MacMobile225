@@ -1,3 +1,6 @@
+//MIT License
+//Copyright (c) 2018 Taylor Smith
+
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
 import 'package:intl/intl.dart';
@@ -34,7 +37,7 @@ class EventsView extends StatelessWidget {
   final String detailField;
   final String dateField;
   final ThemeData theme;
-
+ 
   String getDescription(Map<String, String> event) {
     if (event['description'] != null) {
       event['description'] = event['description'].replaceAll('&quot;', " ");
@@ -43,11 +46,12 @@ class EventsView extends StatelessWidget {
       event['description'] = event['description']
           .split("Sponsored by ")[0];  
       if(event['description'] == " "){
-        return "No description.";
+        return "No description.               ";
       }
       return event[desField];
-    } else {
-      return "No description.";
+    }
+    else {
+      return "No description.               ";
     }
   }
 

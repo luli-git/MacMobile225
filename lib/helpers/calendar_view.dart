@@ -1,3 +1,6 @@
+//MIT License
+//Copyright (c) 2018 Taylor Smith
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:mac_mobile_attempt/helpers/calendar_information.dart';

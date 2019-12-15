@@ -44,7 +44,7 @@ class ResourceViewModel {
             image: 'assets/images/r_studyroom1.jpg',
             name: "Group Study Room",
             category: "academic",
-            ),
+            ), 
         Resource(
             link:'https://www.macalester.edu/studyaway/',
             image: 'assets/images/r_studyaway1.jpg',
