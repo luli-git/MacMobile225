@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:intl/intl.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+/*
+This file initializes the list of facilities and display them in expansion tiles. 
+It fetches data from FireBase about each facility. The facilities each have a location, link, 
+name, and open hours. 
+ */
 
 class HoursTab extends StatelessWidget {
   @override
@@ -41,9 +46,11 @@ class ListPage extends StatefulWidget {
   _ListPageState createState() => _ListPageState();
 }
 
-Future _data;
 
 class _ListPageState extends State<ListPage> {
+  /*
+  Functions to launch URL and phone calls. 
+  */
   static _launchURL(String link) async {
     if (await canLaunch(link)) {
       await launch(link);
@@ -51,13 +58,18 @@ class _ListPageState extends State<ListPage> {
       throw 'Could not launch $link';
     }
   }
-   _launchPhone(String number) async {
+
+  _launchPhone(String number) async {
     if (await canLaunch("tel:+" + number)) {
       await launch("tel:+" + number);
     } else {
       throw 'Could not launch $number';
     }
   }
+
+  /*
+  Fetch data from Firebase. 
+  */
 
   Future getPosts() async {
     var firestore = Firestore.instance;
@@ -85,10 +97,17 @@ class _ListPageState extends State<ListPage> {
                     itemCount: snapshot.data.length,
                     itemBuilder: (_, index) {
                       return _expansionTile(snapshot.data[index].data);
-                    });
+                    }
+                  );
               }
-            }));
-  }
+            }
+          )
+        ); 
+      }
+
+  /*
+  This function displays a loding widget if the snapshot hasn't finished fetching data from Firebase. 
+  */
 
   Widget showLoad() {
     return new Column(
@@ -108,6 +127,11 @@ class _ListPageState extends State<ListPage> {
       ],
     );
   }
+
+  /*
+  This function displays an expansion tile with the information of each facility and the links 
+  phone numbers, and locations. 
+  */
 
   Widget _expansionTile(Map values) {
     return ExpansionTile(
@@ -146,10 +170,19 @@ class _ListPageState extends State<ListPage> {
                     const Padding(padding: EdgeInsets.only(top: 5.0)),
                     Container(
                         child: InkWell(
-                      child: Text("Phone: " + values['phone'],
-                      
-                          style: TextStyle(decoration: TextDecoration.underline,
-                                   )),
+                      child: Text.rich(
+  TextSpan(
+    text: 'Phone: ',
+    children: <TextSpan>[
+      TextSpan(
+          text: values['phone'],
+          style: TextStyle(
+            decoration: TextDecoration.underline,
+          )),
+      // can add more TextSpans here...
+    ],
+  ),
+),
                       onTap: () => _launchPhone(values['phone']),
                     )),
                     const Padding(padding: EdgeInsets.only(top: 5.0)),
@@ -167,6 +200,10 @@ class _ListPageState extends State<ListPage> {
     );
   }
 
+  /*
+  This function gets the colors of the status based on whether the facility place is open or not. 
+  */
+
   Color _getStatusColor(String hours) {
     String status = getStatus(hours);
     if (status == "OPEN") {
@@ -176,6 +213,10 @@ class _ListPageState extends State<ListPage> {
     }
   }
 
+  /*
+  This function gets the status of the facility based on its opening hours. 
+  */
+
   String getStatus(String hours) {
     DateFormat dateFormat = new DateFormat.Hm();
     DateTime date = DateTime.now();
@@ -183,6 +224,7 @@ class _ListPageState extends State<ListPage> {
     String status = 'CLOSED';
 
     if (hours != " ") {
+
       for (String time in parts) {
         String period = time.trim();
         final now = DateTime.now();
@@ -206,7 +248,12 @@ class _ListPageState extends State<ListPage> {
     return status;
   }
 
+  /*
+  This function supports the expansion tile. 
+  */
+
   Widget _listTile(Map values) {
+    // print(values['friday']);
     DateTime date = DateTime.now();
     String today;
     if (values['name'] == 'Health and Wellness Center') {
@@ -253,9 +300,7 @@ class _ListPageState extends State<ListPage> {
         today = values['sunday'];
       }
     }
-
     return InkWell(
-      // onTap: all[index].urlTap,
       child: SafeArea(
         top: false,
         bottom: false,
