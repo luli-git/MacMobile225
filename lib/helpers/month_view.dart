@@ -1,3 +1,6 @@
+//MIT License
+//Copyright (c) 2018 Taylor Smith
+
 import 'package:flutter/material.dart';
 import 'package:quiver/time.dart';
 import 'calendar_information.dart';

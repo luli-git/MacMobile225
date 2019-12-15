@@ -1,3 +1,6 @@
+//MIT License
+//Copyright (c) 2018 Taylor Smith
+
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
 import 'package:intl/intl.dart';
