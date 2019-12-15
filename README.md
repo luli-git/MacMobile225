@@ -23,9 +23,9 @@ hours tabs are stored in Firebase.
 
 Finally, the events tab uses the Google Calendar API to present the daily on-campus events in a
 calendar. The design of the calendar was inspired by the MIT license in the following Github
-repository https://github.com/tsmith1024/calendar_view_widget. Additionally, the design of the boxes
+repository https://github.com/tsmith1024/calendar_view_widget. The design of the boxes
 that hold the events were inspired by Diego Velásquez López's following Github project: 
-https://gist.github.com/diegoveloper/02424eebd4d6e06ae649b31e4ebcf53c.
+https://gist.github.com/diegoveloper/02424eebd4d6e06ae649b31e4ebcf53c. Additionally, the design of the homepage boxes were inspired by the Flutter's UI kit: https://github.com/iampawan/Flutter-UI-Kit. 
 
 ## Code Structure
 
