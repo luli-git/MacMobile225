@@ -46,11 +46,12 @@ class EventsView extends StatelessWidget {
       event['description'] = event['description']
           .split("Sponsored by ")[0];  
       if(event['description'] == " "){
-        return "No description.";
+        return "No description.               ";
       }
       return event[desField];
-    } else {
-      return "No description.";
+    }
+    else {
+      return "No description.               ";
     }
   }
 
