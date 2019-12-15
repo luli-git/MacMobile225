@@ -25,7 +25,7 @@ const _SCOPES = [CalendarApi.CalendarScope];
 
 class EventApi {
   static List<Event> _allEvents = [];
-
+//Calling the Google Calendar API and adding the appropriate events to a list.
   static void initEvents() {
     clientViaServiceAccount(_credentials, _SCOPES).then((client) {
       var calendar = new CalendarApi(client);
