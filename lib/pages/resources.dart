@@ -177,7 +177,7 @@ class ResourcesTab extends StatelessWidget {
           Container(child: Padding(padding: const EdgeInsets.fromLTRB(0, 18, 0, 5),
           child: Row(children: <Widget>[
             Expanded(child: Divider(color: Colors.black,)),      
-            new Text('   Academic   ',
+            new Text('   Academic Resources   ',
               textAlign: TextAlign.left,
               style: new TextStyle(
               fontSize: 18.0,
