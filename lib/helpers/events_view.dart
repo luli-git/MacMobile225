@@ -39,14 +39,15 @@ class EventsView extends StatelessWidget {
     if (event['description'] != null) {
       event['description'] = event['description'].replaceAll('&quot;', " ");
       event['description'] = event['description']
-          .replaceAll('&nbsp;', " "); //.split('Sponsored by')[1];
+          .replaceAll('&nbsp;', " "); 
       event['description'] = event['description']
-          .split("Sponsored by ")[0]; //.split('Sponsored by')[1];
-      if (event['description'].contains("&")) {
+          .split("Sponsored by ")[0];  
+      if(event['description'] == " "){
+        return "No description.";
       }
       return event[desField];
     } else {
-      return " ";
+      return "No description.";
     }
   }
 
