@@ -66,3 +66,4 @@ Ellen Chen, Lu Li, Yiming Miao, Zachary Fried
 * Macalester College
 * COMP-225 Classmates
 * MIT License
+* Diego Velásquez López
