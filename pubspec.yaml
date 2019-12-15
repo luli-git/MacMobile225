@@ -142,6 +142,11 @@ flutter:
     - assets/images/r_residential.jpg
     - assets/images/r_organization.jpg
     - assets/images/r_classschedule.jpg
+    - assets/images/r_studyroom.jpg
+    - assets/images/r_studyaway.jpg
+    - assets/images/r_studyroom1.jpg
+    - assets/images/r_studyaway1.jpg
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

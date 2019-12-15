@@ -40,6 +40,18 @@ class ResourceViewModel {
             category: "academic",
             ),
         Resource(
+            link:'https://docs.google.com/a/macalester.edu/forms/d/e/1FAIpQLSczsH54xrvTPWUPT78eEEjhPnRXANsIUl4DupNGh3-wL5-81g/viewform',
+            image: 'assets/images/r_studyroom1.jpg',
+            name: "Group Study Room",
+            category: "academic",
+            ),
+        Resource(
+            link:'https://www.macalester.edu/studyaway/',
+            image: 'assets/images/r_studyaway1.jpg',
+            name: "Study Away",
+            category: "academic",
+            ),
+        Resource(
             link:'https://www.macalester.edu/max/#/0',
             image: 'assets/images/r_maxcenter.jpg',
             name: "MAX Center",
