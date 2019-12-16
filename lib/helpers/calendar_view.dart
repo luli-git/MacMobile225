@@ -147,6 +147,7 @@ class _CalendarState extends State<CalendarView> {
   String _getMonth(int month) => (monthList[month - 1]);
 
   void _nextMonth() {
+    //Moves calendar to next month
     var nextMonth = _currentMonth + 1;
     if (nextMonth > DateTime.monthsPerYear) {
       nextMonth = nextMonth % DateTime.monthsPerYear;
@@ -159,6 +160,7 @@ class _CalendarState extends State<CalendarView> {
   }
 
   void _prevMonth() {
+    //Changes calendar to previous month
     var prevMonth = _currentMonth - 1;
     if (prevMonth <= 0) {
       prevMonth = prevMonth + DateTime.monthsPerYear;
@@ -181,6 +183,7 @@ class _CalendarState extends State<CalendarView> {
   }
 
   Widget _header() {
+    //Creates calendar header
     return Container(
       color: _theme.canvasColor,
       padding: const EdgeInsets.only(top: 4.0),
@@ -224,20 +227,14 @@ class _CalendarState extends State<CalendarView> {
   }
 
   _daySelectHandler(int day) {
+    //Handles what happens when a day is tapped on the calendar
     if (_currentDay == day) {
       day = 0;
     }
     setState(() {
       _currentDay = day;
 
-
     });
-
-
-
-//    setState(() => _isSelected = true);
-   //setState(() => _currentDay = day);
-
   }
 
   _onEventTapped(Map<String, String> event) {
@@ -246,6 +243,7 @@ class _CalendarState extends State<CalendarView> {
 
   @override
   Widget build(BuildContext context) {
+    //Building the calendar structure
     return Container(
       child: Expanded(
         child: Column(

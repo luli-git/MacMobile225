@@ -43,6 +43,7 @@ class EventApi {
   }
 
   static List<Event> getAllEvents() {
+    //Returning the list of events from the API
     return _allEvents;
   }
 }

@@ -34,6 +34,7 @@ class MonthView extends StatelessWidget {
 
 
   Widget dayMarker(int day, bool hasEvent, int numEvent) => (
+  //Creates the design of a single day in the calendar.
       Expanded(
         child: GestureDetector(
           onTap: hasEvent
@@ -58,6 +59,7 @@ class MonthView extends StatelessWidget {
               ),
               (hasEvent == true && numEvent == 1 )
                   ?  Row (
+                //Creating the dots that appear if a day contains an event.
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
@@ -82,6 +84,7 @@ class MonthView extends StatelessWidget {
 
 
   Widget weekRow(int startDay, int lastDay) {
+    //Creates a row that represents a week in the calendar.
     List<Widget> days = [];
     for (var i = startDay; i < startDay + DateTime.daysPerWeek; i++) {
       if (i > 0 && i <= lastDay) {
@@ -121,6 +124,7 @@ class MonthView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Builds each month in the calendar.
     const spacing = 0.001;
 
     final firstDayOfMonth = DateTime(year, month, 1).weekday;

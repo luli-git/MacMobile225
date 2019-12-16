@@ -39,6 +39,7 @@ class EventsView extends StatelessWidget {
   final ThemeData theme;
  
   String getDescription(Map<String, String> event) {
+    //Returns the proper event description.
     if (event['description'] != null) {
       event['description'] = event['description'].replaceAll('&quot;', " ");
       event['description'] = event['description']
@@ -56,6 +57,7 @@ class EventsView extends StatelessWidget {
   }
 
   String getLocations(Map<String, String> event) {
+    //Returns the proper event location.
     if (event['location'] != null) {
       return event[detailField];
     } else {
@@ -64,6 +66,7 @@ class EventsView extends StatelessWidget {
   }
 
   String getName(Map<String, String> event) {
+    //Returns the name of the event.
     if (event['name'] != null) {
       return event['name'];
     } else {
@@ -73,6 +76,8 @@ class EventsView extends StatelessWidget {
 
 
   String formatTime(event) {
+    //Formats the event time properly to display on the calendar.
+    //For example, it formats an event from 1:00 AM - 3:00 AM as 1:00-3:00
     if (DateFormat.Hm().format(DateTime.parse(event['date'])) == "00:00") {
       return "All Day   ";
     } else {
@@ -114,6 +119,7 @@ class EventsView extends StatelessWidget {
   }
 
   Widget eventRow(int day, Map<String, String> event) {
+    //Creates the boxes that hold the calendar event information
     return Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -246,6 +252,7 @@ class EventsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Builds each event widget.
     return Expanded(
       child: Container(
         color: prefix0.Colors.grey[100],
