@@ -45,6 +45,7 @@ class EventPageStateful extends State<EventsPage> {
 
 
   static String getMonth(Event event, bool start) {
+    //Returns the month of an event date.
     EventDateTime time;
     if (start == true) {
       time = event.start;
@@ -67,6 +68,7 @@ class EventPageStateful extends State<EventsPage> {
   }
 
   static String getDay(Event event, bool start) {
+    //Returns the day of an event date.
     EventDateTime time;
     if (start == true) {
       time = event.start;
@@ -89,6 +91,7 @@ class EventPageStateful extends State<EventsPage> {
   }
 
   static String getYear(Event event, bool start) {
+    //Returns the year of an event date.
     EventDateTime time;
     if (start == true) {
       time = event.start;
@@ -103,6 +106,7 @@ class EventPageStateful extends State<EventsPage> {
   }
 
   static String getHour(Event event, bool start) {
+    //Adjusts the time from the API to USA Central Time.
     EventDateTime time;
     if (start == true) {
       time = event.start;
@@ -153,6 +157,7 @@ class EventPageStateful extends State<EventsPage> {
   }
 
   static String getMinute(Event event, bool start) {
+    //Returns the minutes of an event date.
     EventDateTime time;
     if (start == true) {
       time = event.start;
@@ -175,6 +180,7 @@ class EventPageStateful extends State<EventsPage> {
   }
 
   static String getSecond(Event event, bool start) {
+    //Returns the seconds of an event date.
     EventDateTime time;
     if (start == true) {
       time = event.start;
@@ -197,6 +203,7 @@ class EventPageStateful extends State<EventsPage> {
   }
 
   static String getDateFormat(Event event, bool start) {
+    //Returns the date in the format necessary to be mapped to a date and time in the calendar.
     return getYear(event, start) +
         "-" +
         getMonth(event, start) +

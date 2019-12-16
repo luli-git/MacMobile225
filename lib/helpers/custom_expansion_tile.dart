@@ -2,6 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+
+/*
+This file provides some of the functions for the boxes that hold the calendar events.
+ */
+
 import 'package:flutter/material.dart';
 
 const Duration _kExpand = Duration(milliseconds: 200);
