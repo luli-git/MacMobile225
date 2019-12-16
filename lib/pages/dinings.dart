@@ -11,7 +11,7 @@ Helper functions of getting information from firebase is also included.
 */
 
 class DiningTab extends StatelessWidget {
-  // This widget is overriding the basic build function, and 
+  // This widget is overriding the basic build function, and
   // the nested scrollable top bar is the main change here.
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,9 @@ class ListPage extends StatefulWidget {
 
 Future _data;
 
-// This function builds a url launcher, which can be used as the effect of clicking each container.
+// This function builds a url launcher, which can be used as the effect of clicking 
+// each container.
+
 class ListPageState extends State<ListPage> {
   static _launchURL(String link) async {
     if (await canLaunch(link)) {
@@ -75,7 +77,6 @@ class ListPageState extends State<ListPage> {
     _data = getPosts();
   }
 
-
 // This widget combines all the information of the whole page's body
   @override
   Widget build(BuildContext context) {
@@ -95,9 +96,7 @@ class ListPageState extends State<ListPage> {
             }));
   }
 
-  /*
-  Displays a loading sign is no data has been loaded. 
-  */
+  // This function is used to display a loading sign is no data has been loaded.
 
   Widget showLoad() {
     return new Column(
@@ -118,69 +117,71 @@ class ListPageState extends State<ListPage> {
     );
   }
 
-  // This function is used to set the color of opening status. 
+  // This function is used to set the color of opening status.
   // Red for closed and green for open.
-  Color _getStatusColor(Map values){
+
+  Color _getStatusColor(Map values) {
     String status = getStatus(values);
     if (status == "OPEN") {
       return Colors.green;
-    }
-    else{
+    } else {
       return Colors.red;
     }
   }
 
-  // The following two functions are used to get the hours and status 
+  // The following two functions are used to get the hours and status
   // according to their order in the list of dining places.
-  String getHours(Map values){
+
+  String getHours(Map values) {
     DateTime date = DateTime.now();
     String today = date.weekday.toString();
-    if(values['break'] == true){
+    if (values['break'] == true) {
       return values['b' + today];
-    }
-    else{
+    } else {
       return values[today];
     }
   }
 
-// Given the open hours of a dining place, check if the dining place is open or not. 
-  String getStatus(Map values){
+// Given the open hours of a dining place, check if the dining place is open or not.
+
+  String getStatus(Map values) {
     DateFormat dateFormat = new DateFormat.Hm();
     DateTime date = DateTime.now();
     String today = date.weekday.toString();
     String ex = " ";
-    if(values['break'] != true){
+    if (values['break'] != true) {
       ex = values[today];
-    }
-    else{
-      ex = values["b"+today];
+    } else {
+      ex = values["b" + today];
       print(ex);
     }
-    
+
     List<String> parts = ex.split("|");
     String status = 'CLOSED';
 
-    if(ex!=" "){
+    if (ex != " ") {
       for (String time in parts) {
-      String period = time.trim();
-      final now = DateTime.now();
-      DateTime open = dateFormat.parse(period.split("-")[0]);
-      DateTime close = dateFormat.parse(period.split("-")[1]);
-      open = new DateTime(now.year, now.month, now.day, open.hour, open.minute);
-      close = new DateTime(now.year, now.month, now.day, close.hour, close.minute);
+        String period = time.trim();
+        final now = DateTime.now();
+        DateTime open = dateFormat.parse(period.split("-")[0]);
+        DateTime close = dateFormat.parse(period.split("-")[1]);
+        open =
+            new DateTime(now.year, now.month, now.day, open.hour, open.minute);
+        close = new DateTime(
+            now.year, now.month, now.day, close.hour, close.minute);
 
-      if (now.isAfter(open) && now.isBefore(close)) {
-        status = "OPEN";
+        if (now.isAfter(open) && now.isBefore(close)) {
+          status = "OPEN";
+        }
       }
     }
-    }
- 
+
     return status;
   }
-  
-  // This widget is the skeleton of each container which shows the information of 
-  // various dining places, with the help of previous functions. 
-  
+
+  // This widget is the skeleton of each container which shows the information of
+  // various dining places, with the help of previous functions.
+
   Widget _listTile(Map values) {
     DateTime date = DateTime.now();
     String today = date.weekday.toString();
@@ -219,13 +220,12 @@ class ListPageState extends State<ListPage> {
                               fontFamily: 'Lora',
                               color: Colors.black87)),
                       const Padding(padding: EdgeInsets.only(top: 8.0)),
-                      
                       Text(getStatus(values),
-                        style: TextStyle(fontSize: 15.0, color: _getStatusColor(values),
-                        )
-                        ),
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: _getStatusColor(values),
+                          )),
                       const Padding(padding: EdgeInsets.only(top: 8.0)),
-
                       Text(getHours(values),
                           style: TextStyle(
                               fontSize: 14.0, color: Colors.grey[600])),
