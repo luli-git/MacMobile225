@@ -95,6 +95,10 @@ class ListPageState extends State<ListPage> {
             }));
   }
 
+  /*
+  Displays a loading sign is no data has been loaded. 
+  */
+
   Widget showLoad() {
     return new Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -139,6 +143,7 @@ class ListPageState extends State<ListPage> {
     }
   }
 
+// Given the open hours of a dining place, check if the dining place is open or not. 
   String getStatus(Map values){
     DateFormat dateFormat = new DateFormat.Hm();
     DateTime date = DateTime.now();
@@ -175,6 +180,7 @@ class ListPageState extends State<ListPage> {
   
   // This widget is the skeleton of each container which shows the information of 
   // various dining places, with the help of previous functions. 
+  
   Widget _listTile(Map values) {
     DateTime date = DateTime.now();
     String today = date.weekday.toString();
