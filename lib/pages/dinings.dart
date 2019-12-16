@@ -3,7 +3,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:intl/intl.dart';
 
+/* 
+This file is the page showing dining information. 
+It cantains a nested scrollable top bar with a picture and a list of 
+clickable containers showing with picture and daily opening hours.
+Helper functions of getting information from firebase is also included.
+*/
+
 class DiningTab extends StatelessWidget {
+  // This widget is overriding the basic build function, and 
+  // the nested scrollable top bar is the main change here.
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -42,6 +51,7 @@ class ListPage extends StatefulWidget {
 
 Future _data;
 
+// This function builds a url launcher, which can be used as the effect of clicking each container.
 class ListPageState extends State<ListPage> {
   static _launchURL(String link) async {
     if (await canLaunch(link)) {
@@ -51,6 +61,7 @@ class ListPageState extends State<ListPage> {
     }
   }
 
+// This function extracts the opening hours of each dining place from firebase.
   Future getPosts() async {
     var firestore = Firestore.instance;
     QuerySnapshot qn = await firestore.collection('dinings').getDocuments();
@@ -64,6 +75,8 @@ class ListPageState extends State<ListPage> {
     _data = getPosts();
   }
 
+
+// This widget combines all the information of the whole page's body
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -100,6 +113,9 @@ class ListPageState extends State<ListPage> {
       ],
     );
   }
+
+  // This function is used to set the color of opening status. 
+  // Red for closed and green for open.
   Color _getStatusColor(Map values){
     String status = getStatus(values);
     if (status == "OPEN") {
@@ -109,17 +125,18 @@ class ListPageState extends State<ListPage> {
       return Colors.red;
     }
   }
+
+  // The following two functions are used to get the hours and status 
+  // according to their order in the list of dining places.
   String getHours(Map values){
     DateTime date = DateTime.now();
     String today = date.weekday.toString();
     if(values['break'] == true){
-
       return values['b' + today];
     }
     else{
       return values[today];
     }
-
   }
 
   String getStatus(Map values){
@@ -156,7 +173,8 @@ class ListPageState extends State<ListPage> {
     return status;
   }
   
-
+  // This widget is the skeleton of each container which shows the information of 
+  // various dining places, with the help of previous functions. 
   Widget _listTile(Map values) {
     DateTime date = DateTime.now();
     String today = date.weekday.toString();
