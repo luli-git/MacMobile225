@@ -5,6 +5,7 @@ events calendar.
 
 
 const List<String> monthList = const [
+  //List of month names for the calendar
   'January',
   'February',
   'March',
@@ -20,6 +21,7 @@ const List<String> monthList = const [
 ];
 
 const List<String> daysAbbreviated = const [
+  //List of abbreviated day names for the calendar.
   'Su',
   'M',
   'Tu',
