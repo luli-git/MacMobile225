@@ -95,9 +95,9 @@ class ListPageState extends State<ListPage> {
             }));
   }
 
-  /*
-  Displays a loading sign is no data has been loaded. 
-  */
+  
+  // This function is used to display a loading sign is no data has been loaded. 
+  
 
   Widget showLoad() {
     return new Column(
