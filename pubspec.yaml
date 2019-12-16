@@ -64,30 +64,20 @@ flutter_icons:
 # The following section is specific to Flutter.
 flutter:
   assets:
-    - assets/images/1600.png
-    - assets/images/1600new.png
-    - assets/images/moodle.png
-    - assets/images/moodlenew.png
-    - assets/images/class.png
-    - assets/images/classnew.png
-    - assets/images/academic.png
-    - assets/images/academicnew.png
+
+
+
+
+
     - assets/images/maclogo.jpg
     - assets/images/snow.jpg
 
-    - assets/images/map.png
+
     - assets/images/security.png
     - assets/images/security2.png
-    - assets/images/organizations.gif
+
     - assets/images/residence.jpg
-    - assets/images/1600.gif
-    - assets/images/moodle.gif
-    - assets/images/class2.jpg
-    - assets/images/calendar.gif
-    - assets/images/maxcenter.gif    
-    - assets/images/library.gif    
-    - assets/images/handshake.jpg
-    - assets/images/appointment.jpg
+
 
 
 
