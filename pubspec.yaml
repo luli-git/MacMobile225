@@ -34,13 +34,6 @@ dependencies:
   flutter_screenutil: ^0.5.0
   get_it: ^1.0.3+2
 
-
-
-
-    
-    
-
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
@@ -57,39 +50,19 @@ flutter_icons:
   android: true
   ios: true
 
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
   assets:
-    - assets/images/1600.png
-    - assets/images/1600new.png
-    - assets/images/moodle.png
-    - assets/images/moodlenew.png
-    - assets/images/class.png
-    - assets/images/classnew.png
-    - assets/images/academic.png
-    - assets/images/academicnew.png
     - assets/images/maclogo.jpg
     - assets/images/snow.jpg
 
-    - assets/images/map.png
     - assets/images/security.png
     - assets/images/security2.png
-    - assets/images/organizations.gif
+
     - assets/images/residence.jpg
-    - assets/images/1600.gif
-    - assets/images/moodle.gif
-    - assets/images/class2.jpg
-    - assets/images/calendar.gif
-    - assets/images/maxcenter.gif    
-    - assets/images/library.gif    
-    - assets/images/handshake.jpg
-    - assets/images/appointment.jpg
-
-
 
     - assets/maxresdefault.jpg
     - assets/cafemac.jpg
@@ -130,7 +103,7 @@ flutter:
     - assets/images/lc.jpg
     - assets/images/lc2.jpg
     - assets/images/hwc2.jpg
-    
+
     - assets/images/r_1600grand.jpg
     - assets/images/r_appointments.jpg
     - assets/images/r_calendar.jpg
@@ -147,23 +120,18 @@ flutter:
     - assets/images/r_studyroom1.jpg
     - assets/images/r_studyaway1.jpg
 
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a

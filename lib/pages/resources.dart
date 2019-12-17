@@ -3,11 +3,19 @@ import 'package:mac_mobile_attempt/helpers/resource_bloc.dart';
 import 'package:mac_mobile_attempt/helpers/resource.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+/* 
+This file is the page showing resources information. 
+It cantains three main categories: academic resources, student life, and career exploration.
+Each type of information is shwon through a clickable square tab, 
+which can direct the user to an external link.
+The links are stored in resource_view_model.dart
+*/
+
 class ResourcesTab extends StatelessWidget {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   BuildContext _context;
 
-  //stack1
+  //stack1 (containing photo in a rounded-angle rectangle)
   Widget imageStack(String img) => 
   new ClipRRect(
     borderRadius: new BorderRadius.circular(12.0),
@@ -18,7 +26,7 @@ class ResourcesTab extends StatelessWidget {
 );
   
 
-  //stack2
+  //stack2 (the shaded bar with text)
   Widget descStack(Resource resource) => Positioned(
         bottom: 0.0,
         left: 0.0,
@@ -47,7 +55,7 @@ class ResourcesTab extends StatelessWidget {
         ),
       );
 
-
+  // This widget works like a skeleton and builds a grid view for each tab.
   Widget resourceGrid(List<Resource> resources) => GridView.count(
     padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
         crossAxisCount:
@@ -79,6 +87,8 @@ class ResourcesTab extends StatelessWidget {
             .toList(),
       );
 
+
+  // The three following functions put tabs of the same category into a list.
   List<Resource> getAcademic(List<Resource> resources) {
     List<Resource> academic = [];
     for (var i=0; i<resources.length; i++) {
@@ -109,6 +119,8 @@ class ResourcesTab extends StatelessWidget {
     return career;
   }
 
+
+  // The following three widgets are lists containing tabs of three categories repectively
   Widget academicData() {
     ResourceBloc resourceBloc = ResourceBloc();
     resourceBloc.resourceBloc();
@@ -150,30 +162,8 @@ class ResourcesTab extends StatelessWidget {
     Widget bodyData() {
       return Scaffold(
         body: SingleChildScrollView(child: Column(children: <Widget>[
-          // Container(margin: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          //   constraints: BoxConstraints(maxWidth: ScreenUtil().setWidth(740), maxHeight: 100),
-          //   child: Ink.image(
-          //     image: AssetImage('assets/images/security2.png'),
-          //     height: ScreenUtil().setWidth(210),
-          //     width: ScreenUtil().setWidth(730),
-          //     fit: BoxFit.fill,
-          //     child: InkWell(
-          //       onTap: () {
-          //         Navigator.push(context, MaterialPageRoute(builder: (context)  {
-          //           return Security();
-          //       } ));},),
-          //   ),
-          // ),
-                      
-          // Container(margin: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 15.0),
-          // //  constraints: BoxConstraints(maxWidth: ScreenUtil().setWidth(740), maxHeight: 100),
-          //   child: Ink.image(
-          //     height: ScreenUtil().setWidth(210),
-          //     width: ScreenUtil().setWidth(730),
-          //     image: AssetImage('assets/images/map.png'),
-          //     fit: BoxFit.fill,
-          //     child: InkWell(onTap: _launchURLmap,),),),
 
+          // This is the container with the divider title for Academic Resources.
           Container(child: Padding(padding: const EdgeInsets.fromLTRB(0, 18, 0, 5),
           child: Row(children: <Widget>[
             Expanded(child: Divider(color: Colors.black,)),      
@@ -186,6 +176,7 @@ class ResourcesTab extends StatelessWidget {
 
           Container(child: academicData()),
 
+          // This is the container with the divider title for Student Life.
           Container(child: Padding(padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
           child: Row(children: <Widget>[
             Expanded(child: Divider(color: Colors.black,)),      
@@ -198,6 +189,7 @@ class ResourcesTab extends StatelessWidget {
 
           Container(child: lifeData()),
 
+          // This is the container with the divider title for Career Exploration.
           Container(child: Padding(padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
           child: Row(children: <Widget>[
             Expanded(child: Divider(color: Colors.black,)),      
@@ -213,6 +205,9 @@ class ResourcesTab extends StatelessWidget {
         );
   }
 
+
+  // This widget overides the build function of flutter, the main difference function is to set
+  // the bar as Mac logo. 
   @override
   Widget build(BuildContext context) {
     _context = context;

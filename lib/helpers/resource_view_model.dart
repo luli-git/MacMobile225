@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mac_mobile_attempt/helpers/resource.dart';
 
+/* 
+This file is used to store the links used in resources page
+*/
+
 class ResourceViewModel {
   
   List<Resource> resourcesItems;
