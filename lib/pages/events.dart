@@ -270,14 +270,12 @@ class EventPageStateful extends State<EventsPage> {
           children: <Widget>[
             // default String parameter values used below as example
             new CalendarView(
-              //onEventTapped: onEventTapped,
               titleField: 'name',
               detailField: 'location',
               dateField: 'date',
               endTime: 'end',
               desField: 'description',
               separatorTitle: 'Events',
-              //theme: theme,
               eventStream: eventsController.stream,
             ),
           ],
