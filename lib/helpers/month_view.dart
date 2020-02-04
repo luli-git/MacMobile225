@@ -33,6 +33,7 @@ class MonthView extends StatelessWidget {
   final ThemeData theme;
 
 
+
   Widget dayMarker(int day, bool hasEvent, int numEvent) => (
   //Creates the design of a single day in the calendar.
       Expanded(

@@ -226,13 +226,14 @@ class _CalendarState extends State<CalendarView> {
     );
   }
 
-  _daySelectHandler(int day) {
-    //Handles what happens when a day is tapped on the calendar
-    if (_currentDay == day) {
-      day = 0;
-    }
-    setState(() {
-      _currentDay = day;
+      _daySelectHandler(int day) {
+        //Handles what happens when a day is tapped on the calendar
+        if (_currentDay == day) {
+          day = 0;
+        }
+        setState(() {
+          _currentDay = day;
+          //_isSelected = true;
 
     });
   }

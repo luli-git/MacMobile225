@@ -76,17 +76,28 @@ class EventPageStateful extends State<EventsPage> {
       time = event.end;
     }
     if (time.dateTime != null) {
-      if (time.dateTime.day > 9) {
-        return time.dateTime.day.toString();
+      if (time.dateTime.hour > 5 ) {
+        if (time.dateTime.day > 9) {
+          return time.dateTime.day.toString();
+        } else {
+          return "0" + time.dateTime.day.toString();
+        }
       } else {
-        return "0" + time.dateTime.day.toString();
+        int newDay = time.dateTime.day - 1;
+        if (newDay > 9) {
+          return newDay.toString();
+        } else {
+          return "0" + newDay.toString();
+        }
       }
-    } else {
-      if (time.date.day > 9) {
-        return time.date.day.toString();
-      } else {
-        return "0" + time.date.day.toString();
-      }
+    }
+    else {
+
+        if (time.date.day > 9) {
+          return time.date.day.toString();
+        } else {
+          return "0" + time.date.day.toString();
+        }
     }
   }
 
@@ -114,9 +125,10 @@ class EventPageStateful extends State<EventsPage> {
       time = event.end;
     }
     if (time.dateTime != null) {
-      if (time.dateTime.hour == 0) {
-        return "0" + time.dateTime.hour.toString();
-      } else if (time.dateTime.hour == 1) {
+       if (time.dateTime.hour == 0){
+        return "18";
+      }
+      else if (time.dateTime.hour == 1) {
         return "19";
       } else if (time.dateTime.hour == 2) {
         return "20";
@@ -136,7 +148,10 @@ class EventPageStateful extends State<EventsPage> {
     } else {
       if (time.date.hour == 0) {
         return "0" + time.date.hour.toString();
-      } else if (time.date.hour == 1) {
+      } else if (time.date.hour == 0){
+        return "18";
+      }
+      else if (time.date.hour == 1) {
         return "19";
       } else if (time.date.hour == 2) {
         return "20";
